@@ -10,5 +10,7 @@ declare module '*.mdx' {
     summary: string;
     tags: string[];
     highlight: boolean;
+    sections?: { id: string; label: string }[];
+    links?: { label: string; href: string }[];
   };
 }

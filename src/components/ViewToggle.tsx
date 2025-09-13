@@ -39,7 +39,7 @@ const ViewToggle = ({ active }: ViewToggleProps) => {
           onClick={() => updateView(option.value)}
           className="text-sm"
         >
-          <option.Icon className="mr-2 h-4 w-4" />
+          <option.Icon className="h-4 w-4" />
           {option.label}
         </Button>
       ))}
