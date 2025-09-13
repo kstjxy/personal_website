@@ -3,7 +3,7 @@ title: "Nomester Truck"
 slug: "nomester-truck"
 date: "2022-05-01"
 role: ["Programmer", "Level Designer"]
-cover: "/images/nomester-truck/screenshot_3.png"
+cover: "/images/nomester-truck/hero.png"
 summary: "My debut into game development, built with LibGDX in Java as part of CS3152 (Game Architecture)."
 tags: ["LibGDX", "Java", "Game Design"]
 highlight: true
@@ -20,6 +20,12 @@ import Gallery from "@/components/mdx/Gallery";
 import YouTube from "@/components/mdx/YouTube";
 import Columns from "@/components/mdx/Columns";
 import SideDecor from "@/components/mdx/SideDecor";
+import screenshot3 from "./nomester-truck/screenshot_3.png";
+import screenshot4 from "./nomester-truck/screenshot_4.png";
+import screenshot5 from "./nomester-truck/screenshot_5.png";
+import uxLeft from "./nomester-truck/ux-left.png";
+import uxRight from "./nomester-truck/ux-right.png";
+import architectureImg from "./nomester-truck/architecture.png";
 
 <h2 id="overview">Overview</h2>
 
@@ -38,7 +44,7 @@ import SideDecor from "@/components/mdx/SideDecor";
   
 </Columns>
 
-<SideDecor leftSrc="/images/nomester-truck/screenshot_4.png" rightSrc="/images/nomester-truck/screenshot_5.png">
+<SideDecor leftSrc={screenshot4} rightSrc={screenshot5}>
   <h3>Story</h3>
   <p>A Treasure Hunter dives to the ocean deep, seeking riches beyond their wildest dreams.</p>
   <p>An ancient shipwreck appears to offer the Hunter refuge from the swirling waters, and potential for an easy score… or so they thought.</p>
@@ -51,9 +57,9 @@ Nomester Truck is a creative endeavor for CS3152: Introduction to Game Architect
 </p>
 
 <Gallery images={[
-  { src: "/images/nomester-truck/screenshot_3.png", alt: "Gameplay" },
-  { src: "/images/nomester-truck/screenshot_5.png", alt: "UI" },
-  { src: "/images/nomester-truck/screenshot_4.png", alt: "Boss" }
+  { src: screenshot3, alt: "Gameplay" },
+  { src: screenshot5, alt: "UI" },
+  { src: screenshot4, alt: "Boss" }
 ]} />
 
 {/* Quick links moved to the header row; component remains available for inline use if desired */}
@@ -92,8 +98,8 @@ I also contributed to gameplay programming (Java/LibGDX) and tools/scripting to 
 I was involved in several UX design tasks, primarily focusing on the main menu display and the kitchen layout. Presented here are the final design of the main menu screen and an early sketch from the initial stages of game development:
 
 <Columns cols={2}>
-  <img src="/images/nomester-truck/ux-left.png" alt="Main menu screen" className="w-full rounded-lg border" />
-  <img src="/images/nomester-truck/ux-right.png" alt="Early kitchen layout sketch" className="w-full rounded-lg border" />
+  <img src={uxLeft} alt="Main menu screen" className="w-full rounded-lg border" />
+  <img src={uxRight} alt="Early kitchen layout sketch" className="w-full rounded-lg border" />
 </Columns>
 
 <h2 id="architecture-spec">Architecture Specification</h2>
@@ -109,6 +115,6 @@ I played a significant role in the development of our game’s architecture spec
     </p>
   </div>
   <div className="not-prose">
-    <img src="/images/nomester-truck/architecture.png" alt="Controller / Model / View diagram" className="w-full rounded-lg border bg-white p-2" />
+    <img src={architectureImg} alt="Controller / Model / View diagram" className="w-full rounded-lg border bg-white p-2" />
   </div>
 </Columns>
