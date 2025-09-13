@@ -29,6 +29,8 @@ const Gallery: React.FC<GalleryProps> = ({ images, className, children }) => {
                       <img
                         src={img.src}
                         alt={img.alt ?? ""}
+                        loading="lazy"
+                        decoding="async"
                         className="h-auto w-full object-cover"
                         onError={(e) => {
                           e.currentTarget.src =

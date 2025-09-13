@@ -32,12 +32,36 @@ const SideDecor: React.FC<SideDecorProps> = ({
 }) => {
   return (
     <div className={cn("not-prose my-8", className)}>
-      <div className="grid grid-cols-[1fr_minmax(0,700px)_1fr] items-center gap-6">
+      {/* Mobile layout: images inline above content */}
+      {(leftSrc || rightSrc) && (
+        <div className="mb-4 flex items-center justify-center gap-4 md:hidden">
+          {leftSrc ? (
+            <img
+              src={leftSrc}
+              alt={leftAlt}
+              loading="lazy"
+              className={cn("h-20 w-auto select-none object-contain", leftClassName)}
+            />
+          ) : null}
+          {rightSrc ? (
+            <img
+              src={rightSrc}
+              alt={rightAlt}
+              loading="lazy"
+              className={cn("h-20 w-auto select-none object-contain", rightClassName)}
+            />
+          ) : null}
+        </div>
+      )}
+
+      {/* Desktop/tablet layout: side decor with centered content */}
+      <div className="hidden items-center gap-6 md:grid md:grid-cols-[1fr_minmax(0,700px)_1fr]">
         <div className="justify-self-end">
           {leftSrc ? (
             <img
               src={leftSrc}
               alt={leftAlt}
+              loading="lazy"
               className={cn(
                 "pointer-events-none h-28 select-none object-contain md:h-40",
                 leftClassName,
@@ -51,6 +75,7 @@ const SideDecor: React.FC<SideDecorProps> = ({
             <img
               src={rightSrc}
               alt={rightAlt}
+              loading="lazy"
               className={cn(
                 "pointer-events-none h-28 select-none object-contain md:h-40",
                 rightClassName,
@@ -59,6 +84,9 @@ const SideDecor: React.FC<SideDecorProps> = ({
           ) : null}
         </div>
       </div>
+
+      {/* Mobile content (full width) */}
+      <div className="prose-neutral dark:prose-invert prose max-w-none md:hidden">{children}</div>
     </div>
   );
 };

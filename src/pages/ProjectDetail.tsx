@@ -104,6 +104,8 @@ const ProjectDetail = () => {
           <img
             src={project.cover}
             alt={`${project.title} hero`}
+            loading="eager"
+            decoding="async"
             className="h-full w-full object-cover object-center"
             onError={(e) => {
               e.currentTarget.src =

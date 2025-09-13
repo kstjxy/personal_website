@@ -72,6 +72,8 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
             <img
               src={project.cover}
               alt={`${project.title} project thumbnail`}
+              loading="lazy"
+              decoding="async"
               className="h-full w-full object-cover transition-transform duration-200 group-hover:scale-105"
               onError={(e) => {
                 // Fallback for missing images
