@@ -1,73 +1,66 @@
-# Welcome to your Lovable project
+# XJ Portfolio — Vite + React + MDX
 
-## Project info
+This is a small personal portfolio site built as a single‑page app. Project content is authored in MDX and compiled into React components at build/dev time. The UI uses Tailwind and shadcn (Radix UI primitives) for a clean, component‑driven setup.
 
-**URL**: https://lovable.dev/projects/86643da6-0f72-4792-8de5-97d27c191102
+## Tech Stack
 
-## How can I edit this code?
+- Vite 5 + React 18 + TypeScript 5 (SWC plugin)
+- Tailwind CSS 3 (+ Typography + tailwindcss-animate)
+- shadcn/ui components built on Radix UI
+- MDX v3 with remark plugins for frontmatter
+- React Router v6 for SPA routing
 
-There are several ways of editing your application.
+## How Content Flows
 
-**Use Lovable**
+1) Author MDX with frontmatter
+- Each project lives in `content/projects/*.mdx` and starts with YAML frontmatter:
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/86643da6-0f72-4792-8de5-97d27c191102) and start prompting.
+---
+title: "AR Museum Experience"
+slug: "ar-museum-experience"
+date: "2023-08-05"
+role: ["AR Developer", "UX Designer"]
+cover: "/images/ar-museum-experience/cover.jpg"
+summary: "Immersive AR application for museum exhibits."
+tags: ["Unity", "ARKit", "Android", "iOS"]
+highlight: false
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+Then write Markdown with optional JSX components.
 
-**Use your preferred IDE**
+2) Compile MDX during dev/build
+- Vite runs `@mdx-js/rollup` with `remark-frontmatter` and `remark-mdx-frontmatter` (`vite.config.ts:1`).
+- Frontmatter is exported as a named ESM export `frontmatter`. The MDX body becomes the module default export (a React component).
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+3) Load all projects as modules
+- `src/lib/content.ts:1` uses `import.meta.glob('/content/projects/*.mdx', { eager: true })` to import every MDX file at startup.
+- It shapes metadata (slug, month/year labels) and exposes:
+  - `allProjects`: array of project metadata + component reference
+  - `getProjectBySlug(slug)` / `getProjectsByView(view)` helpers
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+4) Render lists and details
+- `src/pages/Work.tsx:1` lists projects using `allProjects` and a simple view toggle.
+- `src/pages/ProjectDetail.tsx:1` looks up a project by slug and renders its MDX via `<MDXProvider><project.MDXContent /></MDXProvider>` with Tailwind Typography prose styles.
 
-Follow these steps:
+## Dev & Build
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+- Dev server with HMR: `npm run dev`
+  - Editing `.mdx` files hot‑reloads impacted routes.
+  - Adding/removing `.mdx` files triggers a refresh; they’re auto‑discovered by the glob import.
+- Production build: `npm run build` and `npm run preview`
+  - MDX is compiled once and bundled. With `eager: true`, all project content is included in the client bundle.
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## Repo Layout
 
-# Step 3: Install the necessary dependencies.
-npm i
+- `vite.config.ts`: Vite + React SWC + MDX + remark frontmatter setup
+- `tailwind.config.ts`: Tailwind theme, tokens, plugins
+- `src/index.css`: CSS variables (design tokens) and Tailwind layers
+- `content/projects/*.mdx`: Project entries (content + metadata)
+- `src/lib/content.ts`: MDX loading and metadata shaping
+- `src/pages/*`: Routes (Work index, Project detail, etc.)
+- `src/components/ui/*`: shadcn/Radix UI components
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+## Notes
 
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/86643da6-0f72-4792-8de5-97d27c191102) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+- Tailwind classes inside MDX: if you add Tailwind classes directly in `.mdx`, also include `./content/**/*.{md,mdx}` in `content` globs in `tailwind.config.ts` so classes aren’t purged.
+- All MDX is imported eagerly for simplicity. If bundle size becomes a concern, switch to lazy `import.meta.glob` and load project pages on demand.
