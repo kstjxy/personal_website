@@ -1,4 +1,5 @@
 import LeftNavigation from "./LeftNavigation";
+import TopNav from "./TopNav";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -12,10 +13,7 @@ const Layout = ({ children }: LayoutProps) => {
           <LeftNavigation />
         </div>
         <main className="max-h-screen overflow-auto">
-          {/* Mobile navigation placeholder - can be added later */}
-          <div className="border-b border-nav-border bg-nav p-4 lg:hidden">
-            <h1 className="text-xl font-bold">Xiaoyue Jin</h1>
-          </div>
+          <TopNav />
           {children}
         </main>
       </div>

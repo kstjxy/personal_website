@@ -50,7 +50,7 @@ const SectionNav: React.FC<SectionNavProps> = ({ items, left, right }) => {
   }, [items]);
 
   return (
-    <div className="sticky top-0 z-20 border-b bg-background/80 backdrop-blur">
+    <div className="sticky top-14 z-20 border-b bg-background/80 backdrop-blur lg:top-0">
       <nav className="mx-auto max-w-4xl px-4">
         <div className="flex items-center gap-4 py-3">
           {left ? <div className="shrink-0">{left}</div> : null}
