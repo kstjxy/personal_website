@@ -50,8 +50,8 @@ const SectionNav: React.FC<SectionNavProps> = ({ items, left, right }) => {
   }, [items]);
 
   return (
-    <div className="sticky top-0 z-20 bg-background/80 backdrop-blur border-b">
-      <nav className="max-w-4xl mx-auto px-4">
+    <div className="sticky top-0 z-20 border-b bg-background/80 backdrop-blur">
+      <nav className="mx-auto max-w-4xl px-4">
         <div className="flex items-center gap-4 py-3">
           {left ? <div className="shrink-0">{left}</div> : null}
           <div className="flex-1 overflow-x-auto">
@@ -61,8 +61,10 @@ const SectionNav: React.FC<SectionNavProps> = ({ items, left, right }) => {
                   <a
                     href={`#${it.id}`}
                     className={cn(
-                      "text-sm px-1 py-1 transition-colors",
-                      active === it.id ? "text-foreground border-b-2 border-primary" : "text-muted-foreground hover:text-foreground",
+                      "px-1 py-1 text-sm transition-colors",
+                      active === it.id
+                        ? "border-b-2 border-primary text-foreground"
+                        : "text-muted-foreground hover:text-foreground",
                     )}
                     onClick={() => setActive(it.id)}
                   >

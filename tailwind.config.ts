@@ -79,11 +79,11 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       boxShadow: {
-        'card': 'var(--shadow-card)',
-        'card-hover': 'var(--shadow-card-hover)',
+        card: "var(--shadow-card)",
+        "card-hover": "var(--shadow-card-hover)",
       },
       transitionTimingFunction: {
-        'smooth': 'var(--transition-smooth)',
+        smooth: "var(--transition-smooth)",
       },
       keyframes: {
         "accordion-down": {
@@ -107,67 +107,67 @@ export default {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
-      },
-      typography: {
-        DEFAULT: {
-          css: {
-            color: 'hsl(var(--foreground))',
-            maxWidth: 'none',
-            h1: {
-              color: 'hsl(var(--foreground))',
-              fontWeight: '700',
-            },
-            h2: {
-              color: 'hsl(var(--foreground))',
-              fontWeight: '600',
-            },
-            h3: {
-              color: 'hsl(var(--foreground))',
-              fontWeight: '600',
-            },
-            h4: {
-              color: 'hsl(var(--foreground))',
-              fontWeight: '600',
-            },
-            strong: {
-              color: 'hsl(var(--foreground))',
-              fontWeight: '600',
-            },
-            code: {
-              color: 'hsl(var(--foreground))',
-              backgroundColor: 'hsl(var(--muted))',
-              padding: '0.25rem 0.375rem',
-              borderRadius: '0.25rem',
-              fontSize: '0.875em',
-            },
-            blockquote: {
-              color: 'hsl(var(--muted-foreground))',
-              borderLeftColor: 'hsl(var(--border))',
-            },
-            'ul > li': {
-              paddingLeft: '0',
-            },
-            'ol > li': {
-              paddingLeft: '0',
-            },
-            'ul > li::marker': {
-              color: 'hsl(var(--muted-foreground))',
-            },
-            'ol > li::marker': {
-              color: 'hsl(var(--muted-foreground))',
-            },
-            a: {
-              color: 'hsl(var(--primary))',
-              textDecoration: 'underline',
-              fontWeight: '500',
-            },
-            'a:hover': {
-              color: 'hsl(var(--primary))',
-              opacity: '0.8',
-            },
+    },
+    typography: {
+      DEFAULT: {
+        css: {
+          color: "hsl(var(--foreground))",
+          maxWidth: "none",
+          h1: {
+            color: "hsl(var(--foreground))",
+            fontWeight: "700",
+          },
+          h2: {
+            color: "hsl(var(--foreground))",
+            fontWeight: "600",
+          },
+          h3: {
+            color: "hsl(var(--foreground))",
+            fontWeight: "600",
+          },
+          h4: {
+            color: "hsl(var(--foreground))",
+            fontWeight: "600",
+          },
+          strong: {
+            color: "hsl(var(--foreground))",
+            fontWeight: "600",
+          },
+          code: {
+            color: "hsl(var(--foreground))",
+            backgroundColor: "hsl(var(--muted))",
+            padding: "0.25rem 0.375rem",
+            borderRadius: "0.25rem",
+            fontSize: "0.875em",
+          },
+          blockquote: {
+            color: "hsl(var(--muted-foreground))",
+            borderLeftColor: "hsl(var(--border))",
+          },
+          "ul > li": {
+            paddingLeft: "0",
+          },
+          "ol > li": {
+            paddingLeft: "0",
+          },
+          "ul > li::marker": {
+            color: "hsl(var(--muted-foreground))",
+          },
+          "ol > li::marker": {
+            color: "hsl(var(--muted-foreground))",
+          },
+          a: {
+            color: "hsl(var(--primary))",
+            textDecoration: "underline",
+            fontWeight: "500",
+          },
+          "a:hover": {
+            color: "hsl(var(--primary))",
+            opacity: "0.8",
           },
         },
       },
+    },
   },
   plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 } satisfies Config;

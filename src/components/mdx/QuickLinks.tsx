@@ -15,4 +15,3 @@ const QuickLinks: React.FC<QuickLinksProps> = ({ links, align }) => {
 };
 
 export default QuickLinks;
-

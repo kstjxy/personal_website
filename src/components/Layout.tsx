@@ -7,13 +7,13 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => {
   return (
     <div className="min-h-screen bg-background">
-      <div className="grid lg:grid-cols-[260px_minmax(0,1fr)] md:grid-cols-1">
+      <div className="grid md:grid-cols-1 lg:grid-cols-[260px_minmax(0,1fr)]">
         <div className="hidden lg:block">
           <LeftNavigation />
         </div>
-        <main className="overflow-auto max-h-screen">
+        <main className="max-h-screen overflow-auto">
           {/* Mobile navigation placeholder - can be added later */}
-          <div className="lg:hidden p-4 border-b border-nav-border bg-nav">
+          <div className="border-b border-nav-border bg-nav p-4 lg:hidden">
             <h1 className="text-xl font-bold">XJ Portfolio</h1>
           </div>
           {children}

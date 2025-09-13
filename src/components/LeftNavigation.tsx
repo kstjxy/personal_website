@@ -11,10 +11,10 @@ const LeftNavigation = () => {
   ];
 
   return (
-    <aside className="sticky top-0 h-screen w-[260px] bg-nav border-r border-nav-border p-6 flex flex-col">
+    <aside className="sticky top-0 flex h-screen w-[260px] flex-col border-r border-nav-border bg-nav p-6">
       {/* Site Header */}
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-foreground mb-2">XJ</h1>
+        <h1 className="mb-2 text-2xl font-bold text-foreground">XJ</h1>
         <p className="text-sm text-muted-foreground">Portfolio</p>
       </div>
 
@@ -25,10 +25,10 @@ const LeftNavigation = () => {
             <li key={item.path}>
               <Link
                 to={item.path}
-                className={`block px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                className={`block rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
                   location.pathname.startsWith(item.path)
                     ? "bg-accent text-accent-foreground"
-                    : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
+                    : "text-muted-foreground hover:bg-accent/50 hover:text-foreground"
                 }`}
               >
                 {item.label}
@@ -39,12 +39,12 @@ const LeftNavigation = () => {
       </nav>
 
       {/* Identity Card */}
-      <div className="mt-auto bg-card rounded-xl p-4 shadow-card border">
+      <div className="mt-auto rounded-xl border bg-card p-4 shadow-card">
         <div className="mb-3">
-          <h3 className="font-semibold text-card-foreground mb-1">XJ</h3>
-          <p className="text-sm text-muted-foreground mb-2">Game Developer & Designer</p>
+          <h3 className="mb-1 font-semibold text-card-foreground">XJ</h3>
+          <p className="mb-2 text-sm text-muted-foreground">Game Developer & Designer</p>
         </div>
-        
+
         <div className="space-y-2">
           <Badge variant="secondary" className="text-xs">
             Available for Internships

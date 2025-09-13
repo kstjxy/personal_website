@@ -17,7 +17,7 @@ export default defineConfig(({ mode }) => ({
       remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],
     }),
     react(),
-    mode === "development" && componentTagger()
+    mode === "development" && componentTagger(),
   ].filter(Boolean),
   resolve: {
     alias: {

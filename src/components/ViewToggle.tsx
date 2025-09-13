@@ -19,7 +19,7 @@ const ViewToggle = ({ active }: ViewToggleProps) => {
     } else {
       newParams.set("view", view);
     }
-    
+
     const newUrl = `/work${newParams.toString() ? `?${newParams.toString()}` : ""}`;
     navigate(newUrl, { replace: true });
   };
@@ -30,7 +30,7 @@ const ViewToggle = ({ active }: ViewToggleProps) => {
   ];
 
   return (
-    <div className="flex gap-2 mb-8">
+    <div className="mb-8 flex gap-2">
       {options.map((option) => (
         <Button
           key={option.value}

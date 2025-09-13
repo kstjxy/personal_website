@@ -37,19 +37,19 @@ type MDXModule = {
   cover?: string;
 };
 
-const modules = import.meta.glob('/content/projects/*.mdx', {
+const modules = import.meta.glob("/content/projects/*.mdx", {
   eager: true,
 }) as Record<string, MDXModule>;
 
 function processModule(filePath: string, mod: MDXModule): Project {
-  const fm = mod.frontmatter || ({} as MDXModule['frontmatter']);
-  const slug = (fm.slug ?? filePath.split('/').pop()?.replace('.mdx', '')) || '';
+  const fm = mod.frontmatter || ({} as MDXModule["frontmatter"]);
+  const slug = (fm.slug ?? filePath.split("/").pop()?.replace(".mdx", "")) || "";
 
   const date = new Date(fm.date);
   const year = date.getFullYear();
-  const monthLabel = new Intl.DateTimeFormat('en-US', { 
-    month: 'long', 
-    year: 'numeric' 
+  const monthLabel = new Intl.DateTimeFormat("en-US", {
+    month: "long",
+    year: "numeric",
   }).format(date);
 
   const cover = (mod as unknown as { cover?: string }).cover || fm.cover || "/placeholder.svg";
@@ -66,7 +66,7 @@ function processModule(filePath: string, mod: MDXModule): Project {
     url: `/work/${slug}`,
     year,
     monthLabel,
-    content: '',
+    content: "",
     MDXContent: mod.default,
     sections: fm.sections,
     links: fm.links,
@@ -79,22 +79,24 @@ export const allProjects: Project[] = Object.entries(modules).map(([filePath, mo
 });
 
 export function getProjectBySlug(slug: string): Project | undefined {
-  return allProjects.find(project => project.slug === slug);
+  return allProjects.find((project) => project.slug === slug);
 }
 
-export function getProjectsByView(view: 'relevance' | 'chronological'): Project[] {
+export function getProjectsByView(view: "relevance" | "chronological"): Project[] {
   switch (view) {
-    case 'chronological':
-      return [...allProjects]
-        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-    
-    case 'relevance':
+    case "chronological":
+      return [...allProjects].sort(
+        (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+      );
+
+    case "relevance":
     default:
       // Relevance = highlights first (most important), then by date
-      const sortedByDate = [...allProjects]
-        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-      const highlights = sortedByDate.filter(p => p.highlight);
-      const regular = sortedByDate.filter(p => !p.highlight);
+      const sortedByDate = [...allProjects].sort(
+        (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+      );
+      const highlights = sortedByDate.filter((p) => p.highlight);
+      const regular = sortedByDate.filter((p) => !p.highlight);
       return [...highlights, ...regular];
   }
 }

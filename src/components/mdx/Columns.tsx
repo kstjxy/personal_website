@@ -15,11 +15,8 @@ type ColumnsProps = {
 const Columns: React.FC<ColumnsProps> = ({ cols = 2, className, gap = "gap-6", children }) => {
   const mdCols = cols === 4 ? "md:grid-cols-4" : cols === 3 ? "md:grid-cols-3" : "md:grid-cols-2";
   return (
-    <div className={cn("not-prose my-6 grid grid-cols-1", mdCols, gap, className)}>
-      {children}
-    </div>
+    <div className={cn("not-prose my-6 grid grid-cols-1", mdCols, gap, className)}>{children}</div>
   );
 };
 
 export default Columns;
-

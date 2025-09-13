@@ -11,9 +11,10 @@ interface LinkButtonsProps {
 
 const LinkButtons: React.FC<LinkButtonsProps> = ({ links, align = "left" }) => {
   if (!links?.length) return null;
-  const justify = align === "right" ? "justify-end" : align === "center" ? "justify-center" : "justify-start";
+  const justify =
+    align === "right" ? "justify-end" : align === "center" ? "justify-center" : "justify-start";
   return (
-    <div className={`flex flex-wrap items-center gap-2 my-4 ${justify}`}>
+    <div className={`my-4 flex flex-wrap items-center gap-2 ${justify}`}>
       {links.map((l) => (
         <Button key={l.href + l.label} asChild size="sm" variant="secondary" className="gap-2">
           <a href={l.href} target="_blank" rel="noreferrer noopener">

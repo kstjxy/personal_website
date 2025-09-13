@@ -6,16 +6,17 @@ import ViewToggle from "@/components/ViewToggle";
 const Work = () => {
   const [searchParams] = useSearchParams();
   const view = (searchParams.get("view") as "relevance" | "chronological") || "relevance";
-  
+
   const projects = getProjectsByView(view);
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
+    <div className="mx-auto max-w-4xl p-6">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-foreground mb-2">My Work</h1>
+        <h1 className="mb-2 text-3xl font-bold text-foreground">My Work</h1>
         <p className="text-muted-foreground">
-          Here's a collection of projects I've built—games, apps, and interactive experiences that I'm excited to share.
+          Here's a collection of projects I've built—games, apps, and interactive experiences that
+          I'm excited to share.
         </p>
       </div>
 
@@ -31,7 +32,7 @@ const Work = () => {
 
       {/* Empty State */}
       {projects.length === 0 && (
-        <div className="text-center py-12">
+        <div className="py-12 text-center">
           <p className="text-muted-foreground">No projects found for the selected view.</p>
         </div>
       )}

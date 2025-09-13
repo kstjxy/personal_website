@@ -11,8 +11,14 @@ sections:
   - { id: "game-details", label: "Game Details" }
   - { id: "my-duties", label: "My Duties" }
 links:
-  - { label: "Project showcase >>", href: "https://gdiac.cs.cornell.edu/temp/showcase/gallery/nomster_truck/" }
-  - { label: "Game manual >>", href: "https://assets.nicepagecdn.com/a7c2be37/6110704/files/manual1.pdf" }
+  - {
+      label: "Project showcase >>",
+      href: "https://gdiac.cs.cornell.edu/temp/showcase/gallery/nomster_truck/",
+    }
+  - {
+      label: "Game manual >>",
+      href: "https://assets.nicepagecdn.com/a7c2be37/6110704/files/manual1.pdf",
+    }
 ---
 
 import Gallery from "@/components/mdx/Gallery";
@@ -20,13 +26,14 @@ import YouTube from "@/components/mdx/YouTube";
 import Columns from "@/components/mdx/Columns";
 import SideDecor from "@/components/mdx/SideDecor";
 import screenshot3 from "./nomester-truck/screenshot_3.png";
+import hero from "./nomester-truck/hero.png";
 import screenshot4 from "./nomester-truck/screenshot_4.png";
 import screenshot5 from "./nomester-truck/screenshot_5.png";
 import uxLeft from "./nomester-truck/ux-left.png";
 import uxRight from "./nomester-truck/ux-right.png";
 import architectureImg from "./nomester-truck/architecture.png";
 
-export const cover = screenshot3;
+export const cover = hero;
 
 <h2 id="overview">Overview</h2>
 
@@ -42,26 +49,43 @@ export const cover = screenshot3;
       <li>My role: Programmer, Level designer, UX designer</li>
     </ul>
   </div>
-  
 </Columns>
 
 <SideDecor leftSrc={screenshot4} rightSrc={screenshot5}>
   <h3>Story</h3>
   <p>A Treasure Hunter dives to the ocean deep, seeking riches beyond their wildest dreams.</p>
-  <p>An ancient shipwreck appears to offer the Hunter refuge from the swirling waters, and potential for an easy score… or so they thought.</p>
-  <p>They enter, unaware that the ship is controlled by a malicious Spirit, treading upon the submerged graveyard of the former crew.</p>
-  <p>The Spirit will do anything to ensure none who lays their eyes on the treasure leaves the ship alive…</p>
+  <p>
+    An ancient shipwreck appears to offer the Hunter refuge from the swirling waters, and potential
+    for an easy score… or so they thought.
+  </p>
+  <p>
+    They enter, unaware that the ship is controlled by a malicious Spirit, treading upon the
+    submerged graveyard of the former crew.
+  </p>
+  <p>
+    The Spirit will do anything to ensure none who lays their eyes on the treasure leaves the ship
+    alive…
+  </p>
 </SideDecor>
 
 <p>
-Nomester Truck is a creative endeavor for CS3152: Introduction to Game Architecture at Cornell University, and marks my debut in game development. In this project, completed in May 2022, I took on the roles of a programmer and level designer, utilizing LibGDX, a robust and open‑source game‑development framework written in Java. This experience was more than a course requirement; it was a journey into the heart of game design, where I learned the intricacies of game architecture and the development cycle. It ignited my passion for the gaming industry and showcased my skills in both programming and design (level/UX), thus making it a pivotal milestone in my personal and professional growth.
+  Nomester Truck is a creative endeavor for CS3152: Introduction to Game Architecture at Cornell
+  University, and marks my debut in game development. In this project, completed in May 2022, I took
+  on the roles of a programmer and level designer, utilizing LibGDX, a robust and open‑source
+  game‑development framework written in Java. This experience was more than a course requirement; it
+  was a journey into the heart of game design, where I learned the intricacies of game architecture
+  and the development cycle. It ignited my passion for the gaming industry and showcased my skills
+  in both programming and design (level/UX), thus making it a pivotal milestone in my personal and
+  professional growth.
 </p>
 
-<Gallery images={[
-  { src: screenshot3, alt: "Gameplay" },
-  { src: screenshot5, alt: "UI" },
-  { src: screenshot4, alt: "Boss" }
-]} />
+<Gallery
+  images={[
+    { src: screenshot3, alt: "Gameplay" },
+    { src: screenshot5, alt: "UI" },
+    { src: screenshot4, alt: "Boss" },
+  ]}
+/>
 
 {/* Quick links moved to the header row; component remains available for inline use if desired */}
 
@@ -111,11 +135,17 @@ I played a significant role in the development of our game’s architecture spec
   <div>
     <h3 className="mt-0">Key module implementation</h3>
     <p>
-      Finally, my primary responsibilities as a programmer included developing key game modules. This encompassed managing screen transitions,
-      formulating the logic behind enemy and truck movements, and creating the comprehensive cooking mechanics that form the core of the gameplay experience.
+      Finally, my primary responsibilities as a programmer included developing key game modules.
+      This encompassed managing screen transitions, formulating the logic behind enemy and truck
+      movements, and creating the comprehensive cooking mechanics that form the core of the gameplay
+      experience.
     </p>
   </div>
   <div className="not-prose">
-    <img src={architectureImg} alt="Controller / Model / View diagram" className="w-full rounded-lg border bg-white p-2" />
+    <img
+      src={architectureImg}
+      alt="Controller / Model / View diagram"
+      className="w-full rounded-lg border bg-white p-2"
+    />
   </div>
 </Columns>

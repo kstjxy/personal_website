@@ -12,10 +12,12 @@ This is a small personal portfolio site built as a single‑page app. Project co
 
 ## How Content Flows
 
-1) Author MDX with frontmatter
+1. Author MDX with frontmatter
+
 - Each project lives in `content/projects/*.mdx` and starts with YAML frontmatter:
 
 ---
+
 title: "AR Museum Experience"
 slug: "ar-museum-experience"
 date: "2023-08-05"
@@ -24,21 +26,25 @@ cover: "/images/ar-museum-experience/cover.jpg"
 summary: "Immersive AR application for museum exhibits."
 tags: ["Unity", "ARKit", "Android", "iOS"]
 highlight: false
+
 ---
 
 Then write Markdown with optional JSX components.
 
-2) Compile MDX during dev/build
+2. Compile MDX during dev/build
+
 - Vite runs `@mdx-js/rollup` with `remark-frontmatter` and `remark-mdx-frontmatter` (`vite.config.ts:1`).
 - Frontmatter is exported as a named ESM export `frontmatter`. The MDX body becomes the module default export (a React component).
 
-3) Load all projects as modules
+3. Load all projects as modules
+
 - `src/lib/content.ts:1` uses `import.meta.glob('/content/projects/*.mdx', { eager: true })` to import every MDX file at startup.
 - It shapes metadata (slug, month/year labels) and exposes:
   - `allProjects`: array of project metadata + component reference
   - `getProjectBySlug(slug)` / `getProjectsByView(view)` helpers
 
-4) Render lists and details
+4. Render lists and details
+
 - `src/pages/Work.tsx:1` lists projects using `allProjects` and a simple view toggle.
 - `src/pages/ProjectDetail.tsx:1` looks up a project by slug and renders its MDX via `<MDXProvider><project.MDXContent /></MDXProvider>` with Tailwind Typography prose styles.
 

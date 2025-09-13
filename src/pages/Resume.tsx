@@ -3,23 +3,23 @@ import { Download, ExternalLink } from "lucide-react";
 
 const Resume = () => {
   return (
-    <div className="max-w-4xl mx-auto p-6">
+    <div className="mx-auto max-w-4xl p-6">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-foreground mb-2">Resume</h1>
+        <h1 className="mb-2 text-3xl font-bold text-foreground">Resume</h1>
         <p className="text-muted-foreground">
           Game Developer & Designer • Available for Internships
         </p>
       </div>
 
       {/* Download Section */}
-      <div className="mb-8 p-4 bg-card rounded-xl border shadow-card">
+      <div className="mb-8 rounded-xl border bg-card p-4 shadow-card">
         <div className="flex items-center justify-between">
           <div>
             <h2 className="font-semibold text-card-foreground">Download Resume</h2>
             <p className="text-sm text-muted-foreground">PDF format • Last updated March 2024</p>
           </div>
           <Button>
-            <Download className="w-4 h-4 mr-2" />
+            <Download className="mr-2 h-4 w-4" />
             Download PDF
           </Button>
         </div>
@@ -29,19 +29,19 @@ const Resume = () => {
       <div className="space-y-8">
         {/* Experience */}
         <section>
-          <h2 className="text-xl font-semibold text-foreground mb-4 border-b border-border pb-2">
+          <h2 className="mb-4 border-b border-border pb-2 text-xl font-semibold text-foreground">
             Experience
           </h2>
           <div className="space-y-6">
             <div>
-              <div className="flex items-start justify-between mb-2">
+              <div className="mb-2 flex items-start justify-between">
                 <div>
                   <h3 className="font-medium text-foreground">Independent Game Developer</h3>
                   <p className="text-muted-foreground">Personal Projects</p>
                 </div>
                 <span className="text-sm text-muted-foreground">2023 - Present</span>
               </div>
-              <ul className="text-sm text-muted-foreground space-y-1 ml-4">
+              <ul className="ml-4 space-y-1 text-sm text-muted-foreground">
                 <li>• Developed 5+ complete game projects using Unity and Unreal Engine</li>
                 <li>• Implemented AI systems and procedural generation algorithms</li>
                 <li>• Created multiplayer networked games with custom netcode</li>
@@ -53,18 +53,18 @@ const Resume = () => {
 
         {/* Education */}
         <section>
-          <h2 className="text-xl font-semibold text-foreground mb-4 border-b border-border pb-2">
+          <h2 className="mb-4 border-b border-border pb-2 text-xl font-semibold text-foreground">
             Education
           </h2>
           <div>
-            <div className="flex items-start justify-between mb-2">
+            <div className="mb-2 flex items-start justify-between">
               <div>
                 <h3 className="font-medium text-foreground">Computer Science</h3>
                 <p className="text-muted-foreground">University • Focus on Game Development</p>
               </div>
               <span className="text-sm text-muted-foreground">2022 - 2026</span>
             </div>
-            <p className="text-sm text-muted-foreground ml-4">
+            <p className="ml-4 text-sm text-muted-foreground">
               Relevant coursework: Computer Graphics, AI, Data Structures, Software Engineering
             </p>
           </div>
@@ -72,49 +72,47 @@ const Resume = () => {
 
         {/* Skills */}
         <section>
-          <h2 className="text-xl font-semibold text-foreground mb-4 border-b border-border pb-2">
+          <h2 className="mb-4 border-b border-border pb-2 text-xl font-semibold text-foreground">
             Technical Skills
           </h2>
-          <div className="grid sm:grid-cols-2 gap-6">
+          <div className="grid gap-6 sm:grid-cols-2">
             <div>
-              <h3 className="font-medium text-foreground mb-2">Programming Languages</h3>
+              <h3 className="mb-2 font-medium text-foreground">Programming Languages</h3>
               <p className="text-sm text-muted-foreground">
                 C#, C++, Python, JavaScript, TypeScript, HLSL
               </p>
             </div>
             <div>
-              <h3 className="font-medium text-foreground mb-2">Game Engines & Tools</h3>
+              <h3 className="mb-2 font-medium text-foreground">Game Engines & Tools</h3>
               <p className="text-sm text-muted-foreground">
                 Unity, Unreal Engine, Blender, Git, Perforce
               </p>
             </div>
             <div>
-              <h3 className="font-medium text-foreground mb-2">Specializations</h3>
+              <h3 className="mb-2 font-medium text-foreground">Specializations</h3>
               <p className="text-sm text-muted-foreground">
                 AI/ML, Procedural Generation, Network Programming, Game Design
               </p>
             </div>
             <div>
-              <h3 className="font-medium text-foreground mb-2">Platforms</h3>
-              <p className="text-sm text-muted-foreground">
-                PC, Mobile (iOS/Android), AR/VR, Web
-              </p>
+              <h3 className="mb-2 font-medium text-foreground">Platforms</h3>
+              <p className="text-sm text-muted-foreground">PC, Mobile (iOS/Android), AR/VR, Web</p>
             </div>
           </div>
         </section>
 
         {/* Projects Highlight */}
         <section>
-          <h2 className="text-xl font-semibold text-foreground mb-4 border-b border-border pb-2">
+          <h2 className="mb-4 border-b border-border pb-2 text-xl font-semibold text-foreground">
             Notable Projects
           </h2>
           <div className="space-y-4">
             <div>
-              <div className="flex items-center gap-2 mb-1">
+              <div className="mb-1 flex items-center gap-2">
                 <h3 className="font-medium text-foreground">Neural Dream Engine</h3>
                 <Button variant="ghost" size="sm" asChild>
                   <a href="/work/neural-dream-engine">
-                    <ExternalLink className="w-3 h-3" />
+                    <ExternalLink className="h-3 w-3" />
                   </a>
                 </Button>
               </div>
@@ -123,11 +121,11 @@ const Resume = () => {
               </p>
             </div>
             <div>
-              <div className="flex items-center gap-2 mb-1">
+              <div className="mb-1 flex items-center gap-2">
                 <h3 className="font-medium text-foreground">Quantum Puzzle Mechanics</h3>
                 <Button variant="ghost" size="sm" asChild>
                   <a href="/work/quantum-puzzle-mechanics">
-                    <ExternalLink className="w-3 h-3" />
+                    <ExternalLink className="h-3 w-3" />
                   </a>
                 </Button>
               </div>

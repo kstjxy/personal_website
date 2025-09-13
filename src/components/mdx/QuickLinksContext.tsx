@@ -7,4 +7,3 @@ export type QuickLinksValue = {
 export const QuickLinksContext = React.createContext<QuickLinksValue>({});
 
 export const QuickLinksProvider = QuickLinksContext.Provider;
-

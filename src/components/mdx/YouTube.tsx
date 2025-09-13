@@ -38,13 +38,13 @@ const YouTube: React.FC<YouTubeProps> = ({ id, url, title = "YouTube video", cla
 
   return (
     <div className={className}>
-      <AspectRatio ratio={16 / 9} className="rounded-lg overflow-hidden bg-muted">
+      <AspectRatio ratio={16 / 9} className="overflow-hidden rounded-lg bg-muted">
         <iframe
           src={src}
           title={title}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
-          className="w-full h-full border-0"
+          className="h-full w-full border-0"
         />
       </AspectRatio>
     </div>
@@ -52,4 +52,3 @@ const YouTube: React.FC<YouTubeProps> = ({ id, url, title = "YouTube video", cla
 };
 
 export default YouTube;
-

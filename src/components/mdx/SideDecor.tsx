@@ -39,20 +39,20 @@ const SideDecor: React.FC<SideDecorProps> = ({
               src={leftSrc}
               alt={leftAlt}
               className={cn(
-                "h-28 md:h-40 object-contain select-none pointer-events-none",
+                "pointer-events-none h-28 select-none object-contain md:h-40",
                 leftClassName,
               )}
             />
           ) : null}
         </div>
-        <div className="prose prose-neutral dark:prose-invert max-w-none">{children}</div>
+        <div className="prose-neutral dark:prose-invert prose max-w-none">{children}</div>
         <div className="justify-self-start">
           {rightSrc ? (
             <img
               src={rightSrc}
               alt={rightAlt}
               className={cn(
-                "h-28 md:h-40 object-contain select-none pointer-events-none",
+                "pointer-events-none h-28 select-none object-contain md:h-40",
                 rightClassName,
               )}
             />
@@ -64,4 +64,3 @@ const SideDecor: React.FC<SideDecorProps> = ({
 };
 
 export default SideDecor;
-
