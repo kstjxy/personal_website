@@ -10,6 +10,8 @@ import LinkButtons from "@/components/mdx/LinkButtons";
 import QuickLinks from "@/components/mdx/QuickLinks";
 import { QuickLinksProvider } from "@/components/mdx/QuickLinksContext";
 import YouTube from "@/components/mdx/YouTube";
+import SideDecor from "@/components/mdx/SideDecor";
+import Columns from "@/components/mdx/Columns";
 
 const ProjectDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -108,7 +110,7 @@ const ProjectDetail = () => {
         <div className="prose prose-neutral dark:prose-invert max-w-4xl mx-auto px-0">
           {project.MDXContent ? (
             <QuickLinksProvider value={{ links: project.links }}>
-              <MDXProvider components={{ Gallery, LinkButtons, YouTube, QuickLinks }}>
+              <MDXProvider components={{ Gallery, LinkButtons, YouTube, QuickLinks, SideDecor, Columns }}>
                 <project.MDXContent />
               </MDXProvider>
             </QuickLinksProvider>

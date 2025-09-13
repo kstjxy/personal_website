@@ -12,25 +12,49 @@ sections:
   - { id: "game-details", label: "Game Details" }
   - { id: "my-duties", label: "My Duties" }
 links:
-  - { label: "Propaganda website >>", href: "https://gdiac.cs.cornell.edu/temp/showcase/gallery/nomster_truck/" }
+  - { label: "Project showcase >>", href: "https://gdiac.cs.cornell.edu/temp/showcase/gallery/nomster_truck/" }
   - { label: "Game manual >>", href: "https://assets.nicepagecdn.com/a7c2be37/6110704/files/manual1.pdf" }
 ---
 
 import Gallery from "@/components/mdx/Gallery";
 import YouTube from "@/components/mdx/YouTube";
-import QuickLinks from "@/components/mdx/QuickLinks";
+import Columns from "@/components/mdx/Columns";
+import SideDecor from "@/components/mdx/SideDecor";
 
 <h2 id="overview">Overview</h2>
 
+<Columns cols={2}>
+  <YouTube url="https://youtu.be/D8RLRL5Huhw" title="Nomester Truck trailer" />
+  <div>
+    <h3 className="mt-0">Big Picture</h3>
+    <ul>
+      <li>Engine: LibGDX (Java)</li>
+      <li>Platform: PC</li>
+      <li>Genre: Cooking / Strategy</li>
+      <li>Team size: 3 Designers, 4 Programmers</li>
+      <li>My role: Programmer, Level designer, UX designer</li>
+    </ul>
+  </div>
+  
+</Columns>
+
+<SideDecor leftSrc="/images/nomester-truck/screenshot_4.png" rightSrc="/images/nomester-truck/screenshot_5.png">
+  <h3>Story</h3>
+  <p>A Treasure Hunter dives to the ocean deep, seeking riches beyond their wildest dreams.</p>
+  <p>An ancient shipwreck appears to offer the Hunter refuge from the swirling waters, and potential for an easy score… or so they thought.</p>
+  <p>They enter, unaware that the ship is controlled by a malicious Spirit, treading upon the submerged graveyard of the former crew.</p>
+  <p>The Spirit will do anything to ensure none who lays their eyes on the treasure leaves the ship alive…</p>
+</SideDecor>
+
+<p>
 Nomester Truck is a creative endeavor for CS3152: Introduction to Game Architecture at Cornell University, and marks my debut in game development. In this project, completed in May 2022, I took on the roles of a programmer and level designer, utilizing LibGDX, a robust and open‑source game‑development framework written in Java. This experience was more than a course requirement; it was a journey into the heart of game design, where I learned the intricacies of game architecture and the development cycle. It ignited my passion for the gaming industry and showcased my skills in both programming and design (level/UX), thus making it a pivotal milestone in my personal and professional growth.
+</p>
 
 <Gallery images={[
   { src: "/images/nomester-truck/screenshot_3.png", alt: "Gameplay" },
   { src: "/images/nomester-truck/screenshot_5.png", alt: "UI" },
   { src: "/images/nomester-truck/screenshot_4.png", alt: "Boss" }
 ]} />
-
-<YouTube url="https://youtu.be/D8RLRL5Huhw" title="Nomester Truck trailer" />
 
 {/* Quick links moved to the header row; component remains available for inline use if desired */}
 
@@ -40,7 +64,11 @@ Nomester Truck is a creative endeavor for CS3152: Introduction to Game Architect
 - Built on LibGDX with custom systems for input, physics, and level scripting
 - Deployed cross‑platform with desktop builds and in‑class showcase
 
-Features
+### Core Vision
+
+As the owner of a hungry and impatient monster food truck, Nomster Truck, the player must feed the truck to avoid enemies and navigate through an enchanted forest full of impending danger to return home. The game has both cooking and strategic elements, where the player must cook and decide whether to appease the truck to move, turn and/or distract enemies. The player experiences the frantic movement of a real‑time game while also strategically plotting out turns like in traditional board games. The player will need to find a balance between swiftly completing recipes and planning out their path to the exit.
+
+### Features
 
 - Chop, sear, and boil ingredients to fulfill the truck’s monstrous appetite
 - Compel the truck to drive by swiftly completing recipes to feed the truck
@@ -58,3 +86,29 @@ Our game features a total of 25 levels (including 8 tutorial levels). I was resp
 - Strategic Planning: thoughtful decision‑making, where players plan their actions, from choosing recipes to plotting safe routes and using meals to distract enemies. It adds depth to the game, encouraging a smart, tactical approach to complement the fast‑paced gameplay.
 
 I also contributed to gameplay programming (Java/LibGDX) and tools/scripting to speed iteration.
+
+<h2 id="ux-design">UX design</h2>
+
+I was involved in several UX design tasks, primarily focusing on the main menu display and the kitchen layout. Presented here are the final design of the main menu screen and an early sketch from the initial stages of game development:
+
+<Columns cols={2}>
+  <img src="/images/nomester-truck/ux-left.png" alt="Main menu screen" className="w-full rounded-lg border" />
+  <img src="/images/nomester-truck/ux-right.png" alt="Early kitchen layout sketch" className="w-full rounded-lg border" />
+</Columns>
+
+<h2 id="architecture-spec">Architecture Specification</h2>
+
+I played a significant role in the development of our game’s architecture specification. This included creating detailed dependency diagrams and CRC (Class‑Responsibility‑Collaboration) cards. These tools were essential in providing our development team with a clear understanding of the coding structure, thereby streamlining the development process and facilitating easier collaboration.
+
+<Columns cols={2}>
+  <div>
+    <h3 className="mt-0">Key module implementation</h3>
+    <p>
+      Finally, my primary responsibilities as a programmer included developing key game modules. This encompassed managing screen transitions,
+      formulating the logic behind enemy and truck movements, and creating the comprehensive cooking mechanics that form the core of the gameplay experience.
+    </p>
+  </div>
+  <div className="not-prose">
+    <img src="/images/nomester-truck/architecture.png" alt="Controller / Model / View diagram" className="w-full rounded-lg border bg-white p-2" />
+  </div>
+</Columns>
