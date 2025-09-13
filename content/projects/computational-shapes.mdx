@@ -1,0 +1,106 @@
+---
+title: "Computational Shapes"
+slug: "computational-shapes"
+date: "2025-09-13"
+role: ["Xiaoyue (Crystal) Jin Programmer"]
+summary: "One limitation of LibGDX is its lack of computational geometry tools for creating and drawing polygons. To address this, I ported the graphics module from the Cornell University Game Library (CUGL) to LibGDX. This enhancement allows LibGDX to generate shapes that can be rendered "
+tags: ["LibGDX", "AR", "AI"]
+highlight: "False"
+cover: ""
+links: [{ label: "Original Page", href: "https://xiaoyuejin.com/computational-shapes/" }]
+sections:
+  - { id: "overview", label: "Overview" }
+  - { id: "demo-walkthrough", label: "Demo Walkthrough" }
+  - { id: "code-walkthrough", label: "Code Walkthrough" }
+---
+
+- [Overview](#overview)
+- [Demo Walkthrough](#demo-walkthrough)
+- [Code Walkthrough](#code-walkthrough)
+
+**One limitation of LibGDX is its lack of computational geometry tools for creating and drawing polygons.**  
+**To address this, I ported the graphics module from the Cornell University Game Library (CUGL) to LibGDX. This enhancement allows LibGDX to generate shapes that can be rendered using a standard PolygonSpriteBatch.**  
+**Additionally, this integration supports various other features, including path smoothing, extrusion, and splines. This development significantly expands LibGDX’s capabilities in handling complex geometric shapes and graphics.**
+
+## Demo Walkthrough
+
+![img](/projects/computational-shapes/38161702957511_.pic_-2.jpg)
+
+#### State 0: PolyFactory
+
+Using PolyFactoury class to construct different Poly2 shapes, then convert them to PolygonRegion objects with a white image as their texture for display.
+
+![img](/projects/computational-shapes/38171702957511_.pic_-2.jpg)
+
+#### State 1: PathFactory
+
+Using PathFactoury class to construct different Path2 shapes, then using SimpleExtruder to extrude them to hollow Poly2 objects with a set width, finally, convert them to PolygonRegion objects with a white image as their texture for display.
+
+![img](/projects/computational-shapes/38371703229125_.pic_-1.jpg)
+
+#### State 2: Extruder
+
+Demonstrating different joinCap and endCap options when converting the Path2 object to Poly2 through SimpleExtruder class.
+
+![img](/projects/computational-shapes/38181702957511_.pic_-1.jpg)
+
+#### State 3: PathSmoother
+
+Press and drag to create a Path2 object and extrude it to be displayed on the screen. Then when the key is released, the Pathsmoother will smooth this continuous path of points, reducing the number needed. The number of input and output points will be shown on the screen as well.
+
+![img](/projects/computational-shapes/38191702957554_.pic_.jpg)
+
+#### State 4: Spline
+
+Click on the screen to create anchor points, when at least 4 anchor points are generated, a spline of cubic beziers will be displayed on the screen as Spline2 object converting to PolygonRegion (Spline2->SplinePather->Path2->SimpleExtruder->Poly2->PolygonRegion).
+
+## Code Walkthrough
+
+![img](/projects/computational-shapes/Screenshot2023-12-22at3.29.47AM-1.png)
+
+#### Path2 Class
+
+The Path2 class is designed for representing and manipulating continuous polylines in graphical applications.
+
+Key features include:
+
+- **Vertex Management:** Adding, removing, and modifying vertices in a path.
+- **Path Analysis:** Determining if a path is closed, calculating properties like area and orientation.
+- **Path Manipulation:** Clearing, reversing, scaling (uniformly and non-uniformly), and slicing paths.
+- **Geometric Operations:** Checking point containment and intersection, analyzing path convexity and left turns.
+
+![img](/projects/computational-shapes/Screenshot2023-12-22at3.33.54AM-3.png)
+
+#### Poly2 Class
+
+The Poly2 class is designed to represent simple polygons. It is suitable for complex polygons with holes if they are represented by a corresponding mesh.Key features include:
+
+- **Vertex and Index Management:** Stores vertices and indices for polygon triangulation.
+- **Mesh Representation:** Uses a mesh for internal representation, analyzing adjacency and boundaries.
+- **Scaling and Translation:** Supports uniform and non-uniform scaling, as well as translation.
+- **Boundary Detection:** Identifies exterior boundaries and checks for point containment or boundary incidence.
+- **Utility Functions:** Provides functionality for bounding box calculation and vertex transformation.
+
+![img](/projects/computational-shapes/Screenshot2023-12-22at3.45.31AM-3.png)
+
+#### Spline2 Class
+
+The Spline2 class represents a spline composed of cubic Bezier curves.
+
+Key features include:
+
+- **Bezier Curve Structure:** Each segment of the spline is defined by four control points.
+- **Control Point Management:** Allows for adding, setting, and deleting anchor points and tangents.
+- **Utility Functions:** Includes features for spline manipulation, such as clearing, checking point smoothness, and setting closure.
+
+#### PathFactory/PolyFactory
+
+Both the PolyFactory and PathFactory classes serve as specialized tools for a common goal of facilitating the generation of geometric shapes. While each class has its distinct focus—PolyFactory on solid polygons and PathFactory on line-based paths.
+
+They support the generation of common shapes like triangles, rectangles, circles, ellipses, and arcs with specific dimensions, positions, and other geometric properties.
+
+#### Other Classes:
+
+- **SimpleExtruder**: This class is a factory for extruding paths into a solid polygon.
+- **SplinePather**: This class is a factory for producing Poly2 objects from a Spline2.
+- **PathSmoother**: This class smooths a continuous path of points, reducing the number needed through recursively performs Douglas-Peuker on the given input segment.

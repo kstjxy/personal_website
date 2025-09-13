@@ -1,0 +1,77 @@
+---
+title: "Ray Tracing"
+slug: "ray-tracing"
+date: "2025-09-13"
+role: ["Xiaoyue (Crystal) Jin Programmer"]
+summary: "This is a course project for CS4620: Intro to Computer Graphics at Cornell University. I wrote a ray tracing algorithm in Python and ultimately rendered a chessboard as the final product."
+tags: ["Python", "Ray Tracing", "AR"]
+highlight: "False"
+cover: ""
+links: [{ label: "Original Page", href: "https://xiaoyuejin.com/ray-tracing/" }]
+sections:
+  - { id: "overview", label: "Overview" }
+  - { id: "features", label: "Features" }
+  - { id: "final-display", label: "Final Display" }
+---
+
+- [Overview](#overview)
+- [Features](#features)
+- [Final Display](#final-display)
+
+**This is a course project for CS4620: Intro to Computer Graphics at Cornell University. I wrote a ray tracing algorithm in Python and ultimately rendered a chessboard as the final product.**
+
+### Features
+
+#### Geometric Primitives
+
+This ray tracing algorithm supports rendering five different geometric primitives:
+
+- Sphere
+- Triangle
+- Cylinder
+- Cone
+- Plane
+
+Each primitive has a corresponding class to store its data and an intersect function.
+
+![img](/projects/ray-tracing/Screenshot2023-12-21at11.15.33PM-3.png)
+
+Compute shading for a ray-surface intersection
+
+![img](/projects/ray-tracing/Screenshot2023-12-21at11.09.46PM-3.png)
+
+Sphere initalization function
+
+![img](/projects/ray-tracing/Screenshot2023-12-21at11.10.08PM.png)
+
+Sphere initalization function
+
+#### Light Sources
+
+This ray tracing algorithm supports both Point Light and Ambient Light, as well as a mirror reflection effect.
+
+### Texture Mapping
+
+I introduced checkerboard texture mapping by creating a Texture Class and modifying the Material class and shade function. The Texture Class features functions to initialize the checkerboard texture with a specified height, width, and two distinct colored materials. It also includes a function to determine the material based on the hitpoint’s position. During shading, if the hit material has a texture, I use the Texture class function to update the hit material with the corresponding material.
+
+### Obj Loader
+
+I introduced 3 different obj files for the chess structures – the horse head, the cross, and the fortress head. All of them are built in Fusion 360 and converted to the desired obj file format through Blender.
+
+![img](/projects/ray-tracing/Screenshot2023-12-21at11.17.40PM-1.png)
+
+Additionally, I set up our scene in Blender as a reference for camera and model locations.
+
+![img](/projects/ray-tracing/unnamed5-2.png)
+
+### Final Display
+
+![img](/projects/ray-tracing/unnamed6-1.png)
+
+![img](/projects/ray-tracing/unnamed7.png)
+
+1024 Version
+
+![img](/projects/ray-tracing/Image_Video3-1-1.png)
+
+2024 Version

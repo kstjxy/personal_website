@@ -1,0 +1,127 @@
+---
+title: "Sunk Cost"
+slug: "sunk-cost"
+date: "2025-09-13"
+role: ["Xiaoyue (Crystal) Jin Programmer"]
+summary: "A Treasure Hunter dives to the ocean deep, seeking riches beyond their wildest dreams.An ancient shipwreck appears to offer the Hunter refuge from the swirling waters, and potential for an easy score… or so they thought.They enter, unaware that the ship is controlled by a malicio"
+tags: ["C++", "AR", "AI"]
+highlight: "False"
+cover: ""
+links: [{ label: "Original Page", href: "https://xiaoyuejin.com/sunk-cost/" }]
+sections:
+  - { id: "overview", label: "Overview" }
+  - { id: "game-details", label: "Game Details" }
+  - { id: "core-mechanics", label: "Core Mechanics" }
+  - { id: "my-duties", label: "My Duties" }
+---
+
+- [Overview](#overview)
+- [Game Details](#game-details)
+- [Core Mechanics](#core-mechanics)
+- [My Duties](#my-duties)
+
+**Sunk Cost is a 3-month course project designed for CS4152: Advanced Topics in Computer Game Architecture at Cornell University. The primary objective of this project is to develop a multiplayer real-time strategy (RTS) game that demonstrates advanced techniques in game architecture. Impressively, Sunk Cost garnered significant recognition by receiving the ‘Audience Favorite’ award at the 2023 Game Design Initiative showcase held at Cornell.**
+
+[PROPAGANDA WEBSITE >>](https://gdiac.cs.cornell.edu/gdiac/showcase/gallery/sunkcost/)
+
+## Big Picture
+
+- Engine: Cornell University Game Library (C++)
+- Platform: iOS/Android
+- Genre: Multiplayer/RTS/A dventure
+- T eam size:  3 Designers, 5 Programmers, 1 Producer
+- My role: Software lead, Level designer
+
+![img](/projects/sunk-cost/thumbnail4-1.png)
+
+![img](/projects/sunk-cost/thumbnail3.png)
+
+![img](/projects/sunk-cost/thumbnail1.png)
+
+![img](/projects/sunk-cost/thumbnail2.png)
+
+![thumbnail4](/projects/sunk-cost/thumbnail4.png)
+
+![thumbnail3](/projects/sunk-cost/thumbnail3-1.png)
+
+![thumbnail1](/projects/sunk-cost/thumbnail1-1.png)
+
+![thumbnail2](/projects/sunk-cost/thumbnail2-1.png)
+
+### Story
+
+![](/projects/sunk-cost/Spirit-1.png)
+
+A Treasure Hunter dives to the ocean deep, seeking riches beyond their wildest dreams.  
+An ancient shipwreck appears to offer the Hunter refuge from the swirling waters, and potential for an easy score… or so they thought.  
+They enter, unaware that the ship is controlled by a malicious Spirit, treading upon the submerged graveyard of the former crew.
+
+![](/projects/sunk-cost/newdiverconceptart-3.png)
+
+### High-level Concept
+
+Ready for a thrilling underwater adventure? Play as a treasure hunter and evade secret traps, hide from blinking portraits, and escape with your prize in hand before time runs out; or become a haunting spirit and thwart the intruder at all costs to protect your treasure!
+
+### Design Goal
+
+**Audience:**  
+Quick thinkers and lovers of stealth, strategy, adventure, and horror.**Emotions:**  
+Sparks of fear, tense excitement, uproarious action, anxious anticipation.
+
+### Core Mechanics
+
+### Hunter Side
+
+![img](/projects/sunk-cost/Screenshot2023-12-19at3.52.52AM.png)
+
+![img](/projects/sunk-cost/Screenshot2023-12-19at3.53.05AM-1.png)
+
+![Screenshot2023-12-19at3.52.52AM](/projects/sunk-cost/Screenshot2023-12-19at3.52.52AM-1.png)
+
+![Screenshot2023-12-19at3.53.05AM](/projects/sunk-cost/Screenshot2023-12-19at3.53.05AM.png)
+
+### Hunter Side
+
+![img](/projects/sunk-cost/Screenshot2023-12-19at3.53.13AM.png)
+
+![img](/projects/sunk-cost/Screenshot2023-12-19at3.58.19AM-1.png)
+
+![img](/projects/sunk-cost/Screenshot2023-12-19at3.53.24AM.png)
+
+![img](/projects/sunk-cost/Screenshot2023-12-19at3.58.28AM-1.png)
+
+![Screenshot2023-12-19at3.53.13AM](/projects/sunk-cost/Screenshot2023-12-19at3.53.13AM-1.png)
+
+![Screenshot2023-12-19at3.58.19AM](/projects/sunk-cost/Screenshot2023-12-19at3.58.19AM.png)
+
+![Screenshot2023-12-19at3.53.24AM](/projects/sunk-cost/Screenshot2023-12-19at3.53.24AM-1.png)
+
+![Screenshot2023-12-19at3.58.28AM](/projects/sunk-cost/Screenshot2023-12-19at3.58.28AM.png)
+
+## My Duties
+
+### Level Design
+
+The game map is composed of numerous small tiles. The image above displays a selection of map assets created by the designers. I imported these assets into the Tiled level editor and assembled the final map layout. Subsequently, I exported the designed map as a JSON file and developed a specialized adapter code to render the map within the game.
+
+![img](/projects/sunk-cost/WechatIMG3830-4.jpg)
+
+![img](/projects/sunk-cost/WechatIMG3814-5.jpg)
+
+### Architecture Specification
+
+Prior to commencing the development process, all programmers are expected to create a high-level architecture specification. This includes constructing a dependency diagram and developing CRC (Class-Responsibility-Collaboration) cards. 
+
+My primary responsibility lies in designing the dependency diagram, which delineates the dependencies of each entity within the system. Our game is structured using the MVC (Model-View-Controller) framework. Upon finalizing this structure, my team and I engaged in detailed discussions about the Class-Responsibility-Collaboration aspects for each class, meticulously documenting all pertinent details.
+
+![img](/projects/sunk-cost/ArchitectureSpecification-4.png)
+
+![img](/projects/sunk-cost/Screenshot2023-12-19at2.10.01AM-2.png)
+
+### Spirit Mechanics Implementation
+
+I developed and integrated the four fundamental mechanics for the spirit side, encompassing both the underlying logic and the animation display.
+
+### Leadership Commitment
+
+As the software lead, my duties included coordinating task synchronization between the programming and design teams, and resolving significant merge conflicts. Given the multiplayer nature of our game, I divided the programming team into specialized sub-teams, each with distinct tasks. My responsibility involved overseeing the progress of each sub-team and ensuring seamless collaboration and integration of their efforts.

@@ -1,0 +1,105 @@
+---
+title: "Texas hold ’em AI Combat Platform"
+slug: "texas-hold-em-ai-combat-platform"
+date: "2025-09-13"
+role: ["Xiaoyue (Crystal) Jin Programmer"]
+summary: "This project was conducted during my internship at a gaming company in the summer 2022. It took two months to complete and was a collaborative effort between myself and two other interns. I served as the team lead and programmer. The platform was initially developed for internal "
+tags: ["Unity", "C#", "AR", "AI"]
+highlight: "False"
+cover: ""
+links:
+  [{ label: "Original Page", href: "https://xiaoyuejin.com/texas-hold-em-ai-combat-platform/" }]
+sections:
+  - { id: "overview", label: "Overview" }
+  - { id: "game-details", label: "Game Details" }
+  - { id: "module-interface", label: "Module Interface" }
+---
+
+- [Overview](#overview)
+- [Game Details](#game-details)
+- [Module Interface](#module-interface)
+
+**This project was conducted during my internship at a gaming company in the summer 2022. It took two months to complete and was a collaborative effort between myself and two other interns. I served as the team lead and programmer. The platform was initially developed for internal programming contests within the company. Employees could upload their own AI programs to compete against each other. The platform was a huge success, with over 50 participants and a final champion emerging.**
+
+**Texas Hold’em Poker AI represents a challenge of incomplete information, which is a difficult aspect for AI implementation. The Texas Hold’em Poker AI combat platform serves as a foundation for AI competitions and AI courses. Participants can write AI programs and simulate confrontations to assess the capabilities of their AI algorithms.**
+
+## Big Picture
+
+- Engine: Unity (C#)
+- Platform: PC
+- Team size:  2 Programmer, 1 Designer
+- My role: Team Lead, Programmer
+
+## Game Flow & Features
+
+Before the game starts, participants are selected, each receiving a set number of coins (configurable) for use in the game. The contest lasts for N (configurable) rounds or until only one non-bankrupt player remains. Rankings are based on the players’ coin counts at game end. To simplify AI, a limited betting mode is used, restricting the amount of coins for raising and calling bets.
+
+### Participant Selection
+
+Participants include those submitting code and those connecting via network. Referees can choose which participants enter the game.
+
+### During the Contest
+
+The platform calls the participant’s program interfaces for the contest. The interface displays players, their coin counts, bets placed, current cards, and the dealer.
+
+### Post-Contest
+
+Rankings are given based on coin counts
+
+#### Speed Adjustment
+
+For simulation purposes, the program can adjust contest speed (interface call intervals).
+
+#### Log Recording
+
+Each contest is logged for result tracking, including game progress and data. Logs can be saved locally by clicking “SAVE” in the top right corner.
+
+![img](/projects/texas-hold-em-ai-combat-platform/1280X1280-1.png)
+
+Game Initialization Screen](/projects/texas-hold-em-ai-combat-platform/1280X1280.png)
+
+![img](/projects/texas-hold-em-ai-combat-platform/1280X12802.png)
+
+Game In-Progress Screen](/projects/texas-hold-em-ai-combat-platform/1280X12802-1.png)
+
+![img](/projects/texas-hold-em-ai-combat-platform/1280X12801-1-1.png)
+
+Game In-Progress Screen](/projects/texas-hold-em-ai-combat-platform/1280X12801-1.png)
+
+![img](/projects/texas-hold-em-ai-combat-platform/ef3cf60d-972a-48eb-a56e-e988dd6180a6-1-1.png)
+
+Game Round Settlement Screen](/projects/texas-hold-em-ai-combat-platform/ef3cf60d-972a-48eb-a56e-e988dd6180a6-1.png)
+
+## Module Interface
+
+Participants can submit code in three ways:  
+1. **C# code module** in a specific format, placed in a designated folder (for debugging only).  
+2. **Lua module** written in a specific format, placed in a designated folder.  
+3. **Websocket module** for interaction with the developer’s program.
+
+#### C# module overview:
+
+- OnInit method for AI player initialization.
+- BetAction method for choosing play actions.
+- FinalSelection method for selecting five cards for final hand strength calculation.
+
+The ‘GameStat’ contains some parameters of the game rules, such as the maximum number of rounds, the minimum bet per round, etc. ‘gamestat’ represents the game state of that round.
+
+![img](/projects/texas-hold-em-ai-combat-platform/Screenshot2023-12-21at2.44.09AM-1.png)
+
+#### Lua module overview:
+
+- startfunction method for initialization at contest start.
+- round_start method for initialization at each game’s start.
+- action method for choosing play actions.
+- finalcards method for final card selection.
+- Lua scripts directly access parameters from the C# server’s gamestats.
+
+![img](/projects/texas-hold-em-ai-combat-platform/Screenshot2023-12-21at2.48.13AM-4.png)
+
+#### Websocket module overview:
+
+- The project supports both Lua and websocket module interfaces, corresponding to LuaAI and WebAI classes.
+- OnInit, StartGame, RoundStart, BetAction, and FinalSelection methods function similarly to C#, enabling AI initialization, data synchronization, round preparation, play action choices, and final card selection.
+
+![img](/projects/texas-hold-em-ai-combat-platform/WechatIMG3836-3.jpg)
