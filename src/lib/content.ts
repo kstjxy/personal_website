@@ -26,13 +26,15 @@ type MDXModule = {
     slug?: string;
     date: string;
     role?: string[];
-    cover: string;
+    cover?: string;
     summary: string;
     tags?: string[];
     highlight?: boolean;
     sections?: { id: string; label: string }[];
     links?: { label: string; href: string }[];
   };
+  // Optional named exports from MDX for assets
+  cover?: string;
 };
 
 const modules = import.meta.glob('/content/projects/*.mdx', {
@@ -50,12 +52,14 @@ function processModule(filePath: string, mod: MDXModule): Project {
     year: 'numeric' 
   }).format(date);
 
+  const cover = (mod as unknown as { cover?: string }).cover || fm.cover || "/placeholder.svg";
+
   return {
     title: fm.title,
     slug,
     date: fm.date,
     role: fm.role || [],
-    cover: fm.cover,
+    cover,
     summary: fm.summary,
     tags: fm.tags || [],
     highlight: fm.highlight || false,

@@ -6,11 +6,12 @@ declare module '*.mdx' {
     slug: string;
     date: string;
     role: string[];
-    cover: string;
+    cover?: string;
     summary: string;
     tags: string[];
     highlight: boolean;
     sections?: { id: string; label: string }[];
     links?: { label: string; href: string }[];
   };
+  export const cover: string | undefined;
 }
