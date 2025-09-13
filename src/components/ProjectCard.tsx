@@ -22,7 +22,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
           </svg>
         </div>
         
-        <div className="grid md:grid-cols-[1fr_200px] gap-6 items-start">
+        <div className="grid md:grid-cols-[1fr_280px] gap-6 items-stretch">
           {/* Content */}
           <div className="space-y-4">
             {/* Date */}
@@ -61,7 +61,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
           </div>
 
           {/* Image */}
-          <div className="aspect-video rounded-lg overflow-hidden bg-muted order-first md:order-last">
+          <div className="aspect-video md:aspect-auto md:h-full md:min-h-[180px] rounded-lg overflow-hidden bg-muted order-first md:order-last">
             <img
               src={project.cover}
               alt={`${project.title} project thumbnail`}

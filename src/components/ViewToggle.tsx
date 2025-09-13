@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { useSearchParams, useNavigate } from "react-router-dom";
+import { Sparkles, Clock } from "lucide-react";
 
 interface ViewToggleProps {
   active: "relevance" | "chronological";
@@ -24,8 +25,8 @@ const ViewToggle = ({ active }: ViewToggleProps) => {
   };
 
   const options = [
-    { value: "relevance", label: "Most Relevant" },
-    { value: "chronological", label: "Chronological" },
+    { value: "relevance", label: "Most Relevant", Icon: Sparkles },
+    { value: "chronological", label: "Chronological", Icon: Clock },
   ];
 
   return (
@@ -38,6 +39,7 @@ const ViewToggle = ({ active }: ViewToggleProps) => {
           onClick={() => updateView(option.value)}
           className="text-sm"
         >
+          <option.Icon className="mr-2 h-4 w-4" />
           {option.label}
         </Button>
       ))}
