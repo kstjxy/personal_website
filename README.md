@@ -1,4 +1,4 @@
-# XJ Portfolio — Vite + React + MDX
+# Xiaoyue Jin Portfolio — Vite + React + MDX
 
 This is a small personal portfolio site built as a single‑page app. Project content is authored in MDX and compiled into React components at build/dev time. The UI uses Tailwind and shadcn (Radix UI primitives) for a clean, component‑driven setup.
 

@@ -14,7 +14,7 @@ const LeftNavigation = () => {
     <aside className="sticky top-0 flex h-screen w-[260px] flex-col border-r border-nav-border bg-nav p-6">
       {/* Site Header */}
       <div className="mb-8">
-        <h1 className="mb-2 text-2xl font-bold text-foreground">XJ</h1>
+        <h1 className="mb-2 text-2xl font-bold text-foreground">Xiaoyue Jin</h1>
         <p className="text-sm text-muted-foreground">Portfolio</p>
       </div>
 
@@ -41,7 +41,7 @@ const LeftNavigation = () => {
       {/* Identity Card */}
       <div className="mt-auto rounded-xl border bg-card p-4 shadow-card">
         <div className="mb-3">
-          <h3 className="mb-1 font-semibold text-card-foreground">XJ</h3>
+          <h3 className="mb-1 font-semibold text-card-foreground">Xiaoyue Jin</h3>
           <p className="mb-2 text-sm text-muted-foreground">Game Developer & Designer</p>
         </div>
 

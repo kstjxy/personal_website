@@ -14,7 +14,7 @@ const Layout = ({ children }: LayoutProps) => {
         <main className="max-h-screen overflow-auto">
           {/* Mobile navigation placeholder - can be added later */}
           <div className="border-b border-nav-border bg-nav p-4 lg:hidden">
-            <h1 className="text-xl font-bold">XJ Portfolio</h1>
+            <h1 className="text-xl font-bold">Xiaoyue Jin</h1>
           </div>
           {children}
         </main>

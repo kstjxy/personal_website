@@ -13,9 +13,9 @@ const About = () => {
           <div>
             <h2 className="mb-3 text-xl font-semibold text-foreground">Background</h2>
             <p className="mb-4 leading-relaxed text-foreground">
-              I'm XJ, a passionate game developer with expertise in gameplay programming, AI
-              systems, and procedural generation. I love creating interactive experiences that push
-              the boundaries of what's possible in games.
+              I'm Xiaoyue Jin, a passionate game developer with expertise in gameplay programming,
+              AI systems, and procedural generation. I love creating interactive experiences that
+              push the boundaries of what's possible in games.
             </p>
             <p className="leading-relaxed text-foreground">
               My work spans from experimental AI-driven game engines to educational puzzle games
