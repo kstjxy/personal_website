@@ -20,26 +20,48 @@ links:
   ]
 ---
 
-import coverImg from "./vr-design-in-context-impossible-geometry/cover.svg";
+import YouTube from "@/components/mdx/YouTube";
+import Gallery from "@/components/mdx/Gallery";
+import coverImg from "./vr-design-in-context-impossible-geometry/cover.png";
 
 export const cover = coverImg;
 
 ## Overview
 
-How do you make an "impossible" object feel believable in VR? Our design-in-context study explored that by building camera-dependent sculptures in Unreal Engine. We studied Escher-inspired illusions, replicated them in 3D, then evaluated how users perceive them when they walk around the piece.
+Impossible Geometry is a design-in-context study produced with Cornell's VR studio. Our team translated Escher-inspired illusions into interactive 3D sculptures using Unreal Engine 4/5, then evaluated how they might inform machine vision, spatial design, and future storytelling tools.
 
-## Approach
+<YouTube url="https://youtu.be/Or-iDsLoj88" title="Impossible Cube Prototype" className="my-6" />
 
-- Modeled candidate objects whose silhouettes only align from specific viewpoints.
-- Authored blueprints that swap meshes and shader cutoff planes based on the user’s head position.
-- Used eye-tracking data (on supported headsets) to bias which segments should remain coherent in the player’s foveal region.
+## Research Motivation
 
-## Challenges Learned
+- **Perceptual roots:** Interviews with perception psychologist David Fields highlighted how uncanny spaces arise when expected right angles, shading, or scale cues conflict with reality.
+- **Local vs. global consistency:** We formalized impossible geometry by separating objects into layers (foreground, mid, background). While each layer maintains a valid relationship locally, the loop becomes globally inconsistent—an insight we derived from comparing regular cubes with impossible cubes and triangles.
+- **Design implications:** Violating the “Central Dogma” of projection (3D → 2D) enables new narrative possibilities and challenges sketch-to-model pipelines that assume Euclidean consistency.
 
-- Maintaining the illusion requires tightly controlling parallax; we lerped between hidden proxy meshes as viewers moved.
-- Lighting must avoid harsh shadows that reveal the hack—so we leaned on ambient occlusion and stylized gradients instead of direct lights.
-- Translating 2D illusions to VR highlighted comfort concerns; abrupt pop transitions caused discomfort, so we introduced smooth blends.
+## Unreal Implementation
 
-## Outcome
+- Split the cube into three mesh layers and attached a Scene Capture component to the player camera.
+- Streamed only the background layer (occluded by the mid-layer) to a render target via Unreal’s custom depth settings.
+- Converted that capture into a black-and-white opacity mask applied to the foreground material so the background convincingly "cuts through" when seen from the cone of illusion.
+- Explored both UE4 and UE5 pipelines—UE5’s Lumen global illumination delivered richer bounce light but also exposed the illusion more readily.
 
-The resulting sandbox lets instructors and researchers toggle different illusion styles, making it a useful reference for future machine vision and design studies. Full implementation details and evaluation notes live in the linked report.
+<Gallery
+  images={[
+    {
+      src: "/projects/vr-design-in-context-impossible-geometry/cover.png",
+      alt: "Unreal implementation of the impossible cube mask",
+    },
+  ]}
+/>
+
+## Indicators & Findings
+
+- **Lighting cues:** Shadows, indirect lighting, and relative scale reveal when the background truly sits behind the foreground. Flattened lighting hides the trick; matching these indicators to the illusion is a key next step.
+- **Breaking points:** Leaving the cone of illusion exposes seams where layers join. Those intersections mimic the classic impossible triangle, suggesting a shared governing rule we can generalize.
+- **VR translation:** Stereo rendering requires distinct masks per eye. Without eye-tracked, view-dependent adjustments the illusion collapses—an opportunity for foveated rendering research.
+
+## Future Directions
+
+- Use the local/global consistency framework to tackle additional impossible geometries (triangle, architecture-scale spaces) and derive reusable rules.
+- Prototype VR-specific solutions—eye-tracked masking, adaptive lighting, and comfort blends—to let players walk through impossible spaces without breaking immersion.
+- Apply the indicator analysis to machine-vision research where sketch-to-model systems must detect and classify non-physical structures.
