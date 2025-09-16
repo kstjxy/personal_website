@@ -2,26 +2,40 @@
 title: "3D Pac-Man"
 slug: "3d-pac-man"
 date: "2025-09-13"
-role: ["Xiaoyue (Crystal) Jin Programmer"]
-summary: "This project is a final submission for the course CS4620: Intro to Computer Graphics at Cornell University. We developed a 3D version of the Pac-Man game using AniGraph, a package designed to facilitate cool cross-platform assignments, and Three.js. In this version, we have intro"
-tags: ["AR", "AI", "Pac-Man"]
-highlight: "False"
+role: ["Programmer"]
+summary: "3D modernization of Pac-Man built with AniGraph and Three.js for Cornell's CS4620 practicum, complete with stylized shading, smarter ghosts, and procedural mazes."
+tags: ["Three.js", "Graphics", "Gameplay"]
+highlight: false
 cover: ""
-links: [{ label: "Original Page", href: "https://xiaoyuejin.com/3d-pac-man/" }]
+links:
+  [
+    { label: "Original Page", href: "https://xiaoyuejin.com/3d-pac-man/" },
+    {
+      label: "Project Report",
+      href: "https://assets.nicepagecdn.com/a7c2be37/6110704/files/Report9.pdf",
+    },
+  ]
 ---
 
-**This project is a final submission for the course CS4620: Intro to Computer Graphics at Cornell University. We developed a 3D version of the Pac-Man game using AniGraph, a package designed to facilitate cool cross-platform assignments, and Three.js. In this version, we have introduced new rules to the classic game, including flame effects and semi-transparent blocks that can be eliminated.**Key featrues include:
+import coverImg from "./3d-pac-man/cover.png";
 
-- **Toon Shading:** We implemented custom shading to give the game a cartoon-like appearance.
-- **Character Animation:** Enhanced the gaming experience with fluid and dynamic character movements.
-- **Camera Movement:** Implemented versatile camera controls for an immersive gameplay experience.
-- **Procedurally Generated Maze:** The maze in our game is generated procedurally, offering a unique layout for each game session.
-- **BillBoard Particle System:** This system adds realistic 3D effects to the game’s visual elements.
-- **Enemy AI Logic:** Our enemies are powered by AI algorithm, making them smarter and more challenging.
-- **Various Interaction Modes:** We included different modes of interaction to increase the game’s replay value.
+export const cover = coverImg;
 
-Click here to access the detailed report:**[READ MORE >>](https://assets.nicepagecdn.com/a7c2be37/6110704/files/Report9.pdf)**
+## Overview
 
-![img](/projects/3d-pac-man/RepresentativeImage-1.png)
+For the CS4620: Intro to Computer Graphics final, our team rebuilt Pac-Man in 3D using Cornell's AniGraph framework and Three.js. We rebalanced classic mechanics with new rendering tech—stylized shading, volumetric effects, and smarter enemy behaviors—to keep the original spirit while showcasing a modern pipeline.
 
-![img](/projects/3d-pac-man/Screenshot2023-12-21at3.54.54AM-3.png)
+## Gameplay & Visual Highlights
+
+- **Stylized look:** Custom toon shading, billboard particles, and emissive power-ups give the maze a saturated arcade feel.
+- **Fluid motion:** Authored animation clips and cinematic camera rails to keep Pac-Man readable during fast corners.
+- **Procedural mazes:** Each session generates a new layout, mixing destructible glass walls, portals, and flame hazards.
+- **Adaptive ghosts:** Ghosts share navigation data and switch behaviors based on player state (chase, scatter, flee).
+
+## My Contributions
+
+- Integrated AniGraph rendering features—lighting, toon shading, and particle emitters—on top of Three.js primitives.
+- Prototyped the procedural maze generator and tuned parameters for reliable spawn/goal placement.
+- Implemented camera rigs, character controllers, and event hooks that drive ghost AI state changes.
+
+![Gameplay capture showing toon-shaded Pac-Man maze](/projects/3d-pac-man/Screenshot2023-12-21at3.54.54AM-3.png)

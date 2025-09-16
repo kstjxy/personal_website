@@ -1,17 +1,39 @@
 ---
 title: "Doodle Jump"
 slug: "doodle-jump"
-date: "2025-09-13"
-role: ["Xiaoyue (Crystal) Jin Programmer"]
-summary: "We created a modernized version of Doodle Jump using the FRDMKL46Z accelerometer and UART serial communication. The game, developed in Java with LibGDX and Box2D, interprets accelerometer data as keyboard inputs to control the game. The gameplay focuses on maneuvering the charact"
-tags: ["LibGDX", "Java", "AR"]
-highlight: "False"
+date: "2023-12-01"
+role: ["Programmer"]
+summary: "Hardware-driven refresh of Doodle Jump that maps FRDM-KL46Z accelerometer data to LibGDX and Box2D gameplay."
+tags: ["LibGDX", "Java", "Hardware"]
+highlight: false
 cover: ""
 links: [{ label: "Original Page", href: "https://xiaoyuejin.com/doodle-jump/" }]
 ---
 
-**We created a modernized version of Doodle Jump using the FRDMKL46Z accelerometer and UART serial communication. The game, developed in Java with LibGDX and Box2D, interprets accelerometer data as keyboard inputs to control the game. The gameplay focuses on maneuvering the character based on accelerometer angle readings. Key features include a robust update loop, dynamic platform generation, and collision handling. I conducted thorough testing on both the game’s mechanics and its hardware integration.**For more information, please visit our project page:**[READ MORE >>](https://nicepage.com/c/education-website-mockup)**
+import coverImg from "./doodle-jump/cover.png";
 
-![img](/projects/doodle-jump/doodlejump.png)
+export const cover = coverImg;
 
-![img](/projects/doodle-jump/nilsjump-4.png)
+## Overview
+
+Doodle Jump started as a hardware experiment: we piped FRDM-KL46Z accelerometer values over UART into a LibGDX + Box2D build so tilting the board moves the character. The result is a tactile homage that keeps the frantic vertical gameplay while highlighting embedded input.
+
+## Hardware Integration
+
+- Parsed accelerometer angles at 60 Hz and mapped them to Box2D impulses.
+- Implemented calibration routines to zero out drift and clamp tilt extremes.
+- Added serial connection guards so the game falls back to keyboard if the board disconnects.
+
+## Gameplay Systems
+
+- **Procedural platforms:** Weighted random generation of normal, moving, and breaking platforms.
+- **Collision handling:** Custom contact listeners to trigger bounces, springs, and enemy knockouts.
+- **State loop:** Pause/resume logic tied to hardware input so the board becomes the primary controller.
+
+## My Role
+
+- Led the hardware-software integration, including UART parsing and smoothing filters.
+- Built the Box2D character controller and tuned physics constants for a springy feel.
+- Authored QA checklists to verify latency, collision stability, and backup keyboard controls.
+
+![Screenshot of the LibGDX build of Doodle Jump with accelerometer input](/projects/doodle-jump/nilsjump-4.png)

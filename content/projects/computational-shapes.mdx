@@ -1,102 +1,52 @@
 ---
 title: "Computational Shapes"
 slug: "computational-shapes"
-date: "2025-09-13"
-role: ["Xiaoyue (Crystal) Jin Programmer"]
-summary: "One limitation of LibGDX is its lack of computational geometry tools for creating and drawing polygons. To address this, I ported the graphics module from the Cornell University Game Library (CUGL) to LibGDX. This enhancement allows LibGDX to generate shapes that can be rendered "
-tags: ["LibGDX", "AR", "AI"]
-highlight: "False"
+date: "2024-05-01"
+role: ["Programmer"]
+summary: "Ported Cornell's CUGL geometry toolkit into LibGDX, adding shape generation, extrusion, and spline tooling directly into the engine."
+tags: ["LibGDX", "Geometry", "Tooling"]
+highlight: false
 cover: ""
 links: [{ label: "Original Page", href: "https://xiaoyuejin.com/computational-shapes/" }]
 ---
 
-- [Overview](#overview)
-- [Demo Walkthrough](#demo-walkthrough)
-- [Code Walkthrough](#code-walkthrough)
+import Gallery from "@/components/mdx/Gallery";
+import coverImg from "./computational-shapes/cover.jpg";
 
-**One limitation of LibGDX is its lack of computational geometry tools for creating and drawing polygons.**  
-**To address this, I ported the graphics module from the Cornell University Game Library (CUGL) to LibGDX. This enhancement allows LibGDX to generate shapes that can be rendered using a standard PolygonSpriteBatch.**  
-**Additionally, this integration supports various other features, including path smoothing, extrusion, and splines. This development significantly expands LibGDX’s capabilities in handling complex geometric shapes and graphics.**
+export const cover = coverImg;
 
-## Demo Walkthrough
+## Overview
 
-![img](/projects/computational-shapes/38161702957511_.pic_-2.jpg)
+LibGDX ships without higher-level tools for drawing and manipulating polygons. To unblock our workflow, I ported Cornell's CUGL geometry module into LibGDX and wrapped it with an interactive demo suite. The toolkit now covers polyline authoring, extrusion, smoothing, and spline generation directly in engine.
 
-#### State 0: PolyFactory
+## Demo States
 
-Using PolyFactoury class to construct different Poly2 shapes, then convert them to PolygonRegion objects with a white image as their texture for display.
+- **PolyFactory:** Quick-build Poly2 shapes (triangles, arcs, rounded rectangles) and preview them as textured polygon regions.
+- **PathFactory:** Generate Path2 skeletons and extrude them into hollow geometry using the SimpleExtruder helper.
+- **Extruder settings:** Toggle join/end caps to evaluate how profiles render when swept into solids.
+- **PathSmoother:** Draw freehand curves, then apply Douglas–Peucker simplification to reduce nodes while preserving silhouette.
+- **Spline:** Place anchor points that convert to Spline2 curves, back into paths, and finally to renderable polygons.
 
-![img](/projects/computational-shapes/38171702957511_.pic_-2.jpg)
+<Gallery
+  images={[
+    { src: "/projects/computational-shapes/38171702957511_.pic_-2.jpg", alt: "PathFactory demo" },
+    {
+      src: "/projects/computational-shapes/38181702957511_.pic_-1.jpg",
+      alt: "Extruder join and end caps",
+    },
+    {
+      src: "/projects/computational-shapes/38191702957554_.pic_.jpg",
+      alt: "Path smoothing results",
+    },
+  ]}
+/>
 
-#### State 1: PathFactory
+## Key Classes
 
-Using PathFactoury class to construct different Path2 shapes, then using SimpleExtruder to extrude them to hollow Poly2 objects with a set width, finally, convert them to PolygonRegion objects with a white image as their texture for display.
+- **Path2:** Core polyline container with winding checks, containment tests, scale/translate utilities, and slice operations.
+- **Poly2:** Triangulated polygon representation with boundary detection, mesh adjacency, and transformation helpers.
+- **Spline2 & SplinePather:** Author cubic Bézier splines, then convert them through SplinePather → Path2 → SimpleExtruder → Poly2.
+- **PathFactory & PolyFactory:** Convenience constructors for common primitives with configurable dimensions and offsets.
+- **PathSmoother & SimpleExtruder:** Utility classes that smooth user input and create solid meshes from open paths.
 
-![img](/projects/computational-shapes/38371703229125_.pic_-1.jpg)
-
-#### State 2: Extruder
-
-Demonstrating different joinCap and endCap options when converting the Path2 object to Poly2 through SimpleExtruder class.
-
-![img](/projects/computational-shapes/38181702957511_.pic_-1.jpg)
-
-#### State 3: PathSmoother
-
-Press and drag to create a Path2 object and extrude it to be displayed on the screen. Then when the key is released, the Pathsmoother will smooth this continuous path of points, reducing the number needed. The number of input and output points will be shown on the screen as well.
-
-![img](/projects/computational-shapes/38191702957554_.pic_.jpg)
-
-#### State 4: Spline
-
-Click on the screen to create anchor points, when at least 4 anchor points are generated, a spline of cubic beziers will be displayed on the screen as Spline2 object converting to PolygonRegion (Spline2->SplinePather->Path2->SimpleExtruder->Poly2->PolygonRegion).
-
-## Code Walkthrough
-
-![img](/projects/computational-shapes/Screenshot2023-12-22at3.29.47AM-1.png)
-
-#### Path2 Class
-
-The Path2 class is designed for representing and manipulating continuous polylines in graphical applications.
-
-Key features include:
-
-- **Vertex Management:** Adding, removing, and modifying vertices in a path.
-- **Path Analysis:** Determining if a path is closed, calculating properties like area and orientation.
-- **Path Manipulation:** Clearing, reversing, scaling (uniformly and non-uniformly), and slicing paths.
-- **Geometric Operations:** Checking point containment and intersection, analyzing path convexity and left turns.
-
-![img](/projects/computational-shapes/Screenshot2023-12-22at3.33.54AM-3.png)
-
-#### Poly2 Class
-
-The Poly2 class is designed to represent simple polygons. It is suitable for complex polygons with holes if they are represented by a corresponding mesh.Key features include:
-
-- **Vertex and Index Management:** Stores vertices and indices for polygon triangulation.
-- **Mesh Representation:** Uses a mesh for internal representation, analyzing adjacency and boundaries.
-- **Scaling and Translation:** Supports uniform and non-uniform scaling, as well as translation.
-- **Boundary Detection:** Identifies exterior boundaries and checks for point containment or boundary incidence.
-- **Utility Functions:** Provides functionality for bounding box calculation and vertex transformation.
-
-![img](/projects/computational-shapes/Screenshot2023-12-22at3.45.31AM-3.png)
-
-#### Spline2 Class
-
-The Spline2 class represents a spline composed of cubic Bezier curves.
-
-Key features include:
-
-- **Bezier Curve Structure:** Each segment of the spline is defined by four control points.
-- **Control Point Management:** Allows for adding, setting, and deleting anchor points and tangents.
-- **Utility Functions:** Includes features for spline manipulation, such as clearing, checking point smoothness, and setting closure.
-
-#### PathFactory/PolyFactory
-
-Both the PolyFactory and PathFactory classes serve as specialized tools for a common goal of facilitating the generation of geometric shapes. While each class has its distinct focus—PolyFactory on solid polygons and PathFactory on line-based paths.
-
-They support the generation of common shapes like triangles, rectangles, circles, ellipses, and arcs with specific dimensions, positions, and other geometric properties.
-
-#### Other Classes:
-
-- **SimpleExtruder**: This class is a factory for extruding paths into a solid polygon.
-- **SplinePather**: This class is a factory for producing Poly2 objects from a Spline2.
-- **PathSmoother**: This class smooths a continuous path of points, reducing the number needed through recursively performs Douglas-Peuker on the given input segment.
+![Tooling screenshot: Path2 API overview](/projects/computational-shapes/Screenshot2023-12-22at3.29.47AM-1.png)

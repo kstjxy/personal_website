@@ -1,94 +1,54 @@
 ---
-title: "Tilly’s Critter Command"
+title: "Tilly's Critter Command"
 slug: "tillys-critter-command"
-date: "2025-09-13"
-role: ["Xiaoyue (Crystal) Jin Programmer"]
-summary: "Tilly’s Critter Command, a self-driven project by the Eboard members of the Development in Games Association (DGA) at Cornell, embarked on its development journey in August 2023. Currently, the game is in its advanced stages of development, with the team aiming to wrap up by Febr"
-tags: ["Unity", "C#", "AR", "AI"]
-highlight: "False"
+date: "2024-02-15"
+role: ["Programmer", "Level Designer"]
+summary: "Emotion-powered RTS in Unity where expressive critters battle apathetic robots—built with Cornell DGA leadership."
+tags: ["Unity", "RTS", "Systems Design"]
+highlight: false
 cover: ""
 links: [{ label: "Original Page", href: "https://xiaoyuejin.com/tillys-critter-command/" }]
 ---
 
-- [Overview](#overview)
-- [Game Details](#game-details)
-- [Core Mechanics](#core-mechanics)
-- [My Duties](#my-duties)
+import Gallery from "@/components/mdx/Gallery";
+import coverImg from "./tillys-critter-command/cover.png";
 
-## Tilly's Critter Command
+export const cover = coverImg;
 
-**Tilly’s Critter Command, a self-driven project by the Eboard members of the Development in Games Association (DGA) at Cornell, embarked on its development journey in August 2023. Currently, the game is in its advanced stages of development, with the team aiming to wrap up by February 2024. This will be followed by a comprehensive three-month period dedicated to testing and fine-tuning. We are eagerly anticipating the official release of the game in May 2024, marking the culmination of a year-long development cycle.**
+## Overview
 
-## Big Picture
+Tilly's Critter Command is a Pikmin-inspired RTS created by the Cornell DGA executive team. Players channel emotions to command expressive animals against apathetic robots. We expect to wrap production in spring 2024 after a year of iterative playtests.
 
-- Engine: Unity (C#)
-- Platform: PC
-- Genre: RTS/A dventure
-- T eam size:  4 Designers, 5 Programmers, 1 Marketer
-- My r ole: Programmer, Level designer
+## Emotion-Driven Strategy
 
-### Story
+- **Emotion Manipulator:** Project joy to recruit neutral creatures or anger to send the pack charging at a threat.
+- **Momentum:** Capturing enemy bases cuts off robot reinforcements, while losing your own bases cascades into defeat.
+- **World tone:** Hand-painted biomes and expressive animations reinforce the story of rediscovering feeling.
 
-**Burnt out of your monotonous life, you are suddenly dropped into an unfamiliar world full of overly expressive creatures. Embark on a mystical adventure and learn to harness the power of emotion to drive away the forces of apathy and return home…**
+<Gallery
+  images={[
+    { src: "/projects/tillys-critter-command/promo_art_banner_page_bottom-2.png", alt: "Hero art" },
+    { src: "/projects/tillys-critter-command/1_scale_-2.jpg", alt: "In-game combat" },
+    {
+      src: "/projects/tillys-critter-command/Screenshot2023-12-21at12.14.47AM-1.png",
+      alt: "Joy emotion UI",
+    },
+  ]}
+/>
 
-![img](/projects/tillys-critter-command/promo_art_banner_page_bottom-5.png)
+## Unit Roster
 
-### High-Level Concept
+- **Dogs:** Supportive melee units that buff nearby allies.
+- **Cats:** Lone fighters that spike damage when isolated.
+- **Rams:** Siege specialists that melt bases.
+- **Parrots:** Emotion amplifiers that spread whatever feeling you cast.
+- **Robotic foes:** Crab, ant, scorpion, and rhino beetle bots bring their own movement speeds and attack patterns.
 
-This game is a pikmin-style RTS in which enemy robots are being spawned from one or more bases around the map. The player must control the animals around the map using emotions, guiding the animals to help their cause. 
+## My Contributions
 
-Enemies stop spawning from a base when it has been defeated. Enemies naturally pathfind towards player-controlled bases aiming to take them back, including the base the player starts with. The game ends in the player’s favor when all the enemy bases have been defeated, and ends in the enemy’s favor if the player controls no bases.
+- Built the enemy base system with spawn-weight controls and active enemy caps.
+- Authored the inheritance tree for all enemy behaviors, wiring NavMesh agents with state-driven AI.
+- Solved crowding by toggling NavMeshAgent/NavMeshObstacle components to carve space when enemies idle.
+- Partnered with design on level layouts and encounter pacing as the project pushes toward release.
 
-![img](/projects/tillys-critter-command/logo_no_bg.png)
-
-## Core Mechanics
-
-### Emotions
-
-The player wields an innovative device called the “Emotion Manipulator,” allowing them to influence the emotional states of nearby creatures. This tool operates on two primary emotional triggers:
-
-![](/projects/tillys-critter-command/Screenshot2023-12-21at12.14.47AM-1.png)
-
-**Joy:** Initially, animals are in a neutral state, devoid of any visible emotion. Upon inducing joy, these creatures begin to follow the player, forming a loyal entourage.
-
-![](/projects/tillys-critter-command/anger_plant_with_pickup.png.png)
-
-**Anger:** Triggering anger in an animal causes it to aggressively target the closest robot. When a robot is infused with anger, it prompts all animals following the player to collectively assault that specific robot.
-
-### Animals
-
-➣ **Dogs:** Basic melee units. Dogs gain strength when in proximity to other animals, including fellow dogs. ➣ **Cats :** Also basic melee units, but uniquely, cats become more powerful when solitary and weaker in the presence of other animals, including other cats. ➣ **Rams:** Melee units with a special trait: they inflict significantly higher damage on enemy bases compared to their effectiveness against robots. ➣ **Parrots:** Unique in their response to emotional stimuli. Instead of directly reacting, they radiate the induced emotion, affecting nearby animals with the same emotion.
-
-### Enemies
-
-➣ **Crab Bot:** A standard robot with moderate melee attack capabilities. It does not receive any buffs from group dynamics and is relatively fast. ➣ **Ant Bots:** Smaller, yet formidable in swarms. Their AI is designed to seek each other out, forming groups to enhance their attack strength. They are quick but small. ➣ **Scorpion Bot:** Equipped with a projectile attack, it prioritizes the nearest enemy, be it an animal or the player’s base. Additionally, it can inflict minor damage through physical contact. Its speed is medium-slow. ➣ **Rhino Beetle Bot:** Similar to the Rams, this robot is particularly potent when assaulting the player’s base, but moves at a slower pace.
-
-![img](/projects/tillys-critter-command/1_scale_-2.jpg)
-
-## My Duties
-
-### Implementation of Enemies/Bases
-
-My primary role in the game development process involves the creation and management of various enemy types and their base
-
-### Enemy Base Structure
-
-The enemy base serves as a repository for different enemy types and their prefabricated models, facilitating random spawning. I’ve implemented a system that allows for the adjustment of spawn frequency for each enemy type by modifying their spawn weights. Additionally, we’ve set a maximum limit for the number of active enemies on the map to ensure optimal performance and balance.
-
-### Enemies
-
-I developed a parent class for all enemy types, from which I derived multiple child classes for specific enemy behaviors. Each enemy type exhibits unique attacking patterns. The navigation of enemies is powered by the NavMesh agent, which provides sophisticated pathfinding capabilities. The behavior of each enemy is dynamic, changing according to their current state, which includes spawning, wandering, attacking, and chasing. This approach introduces an element of unpredictability in enemy actions.
-
-![img](/projects/tillys-critter-command/Screenshot2023-12-21at12.54.34AM-5.png)
-
-### Challenges and Solutions in Pathfinding
-
-A significant challenge arose with the use of Unity’s NavMeshAgent. When multiple enemies attempted to navigate simultaneously, they often converged on the same destination. This led to congestion, where the leading units blocked the path of those behind, causing a bottleneck effect.
-
-To resolve this, I integrated both the NavMeshAgent and NavMeshObstacle components into the enemy AI. The strategy involves deactivating the NavMeshObstacle during movement, allowing the NavMeshAgent to guide the pathfinding. Upon reaching their destination, I switch off the NavMeshAgent and activate the NavMeshObstacle with carving enabled. This effectively creates a navigational void in the grid, prompting other units to recalculate their paths for better accessibility and preventing clustering.
-
-![img](/projects/tillys-critter-command/Screenshot2023-12-21at12.47.09AM.png)
-
-### Level Design
-
-As our game is currently in development, my role as a level designer is crucial in shaping the game’s environment. I plan to release detailed level patterns and exemplary scenes once the core mechanics have been finalized and fully implemented. We anticipate this stage to be completed by late January or early February 2024.
+![NavMesh obstacle carving debug view](/projects/tillys-critter-command/Screenshot2023-12-21at12.47.09AM.png)

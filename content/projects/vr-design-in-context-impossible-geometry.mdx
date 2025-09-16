@@ -1,11 +1,11 @@
 ---
 title: "VR Design in Context: Impossible Geometry"
 slug: "vr-design-in-context-impossible-geometry"
-date: "2025-09-13"
-role: ["Xiaoyue (Crystal) Jin Programmer"]
-summary: "In this project, we focuses on creating 3D impossible objects that can be viewed from multiple perspectives. We leveraged the Unreal engine to develop these objects, maintaining their impossibilities as the viewer rotates the model. This research has significant implications in m"
-tags: ["Unreal", "VR", "AR", "AI"]
-highlight: "False"
+date: "2024-04-30"
+role: ["Technical Artist"]
+summary: "Unreal Engine study on recreating impossible objects in VR using camera-dependent meshes, shaders, and eye-tracking cues."
+tags: ["Unreal", "VR", "Research"]
+highlight: false
 cover: ""
 links:
   [
@@ -13,7 +13,33 @@ links:
       label: "Original Page",
       href: "https://xiaoyuejin.com/vr-design-in-context-impossible-geometry/",
     },
+    {
+      label: "Project Report",
+      href: "https://assets.nicepagecdn.com/a7c2be37/6110704/files/VRDesignincontextgroupfinalreport.pdf",
+    },
   ]
 ---
 
-**In this project, we focuses on creating 3D impossible objects that can be viewed from multiple perspectives. We leveraged the Unreal engine to develop these objects, maintaining their impossibilities as the viewer rotates the model. This research has significant implications in machine vision and design, challenging traditional perspectives in computer graphics. We explored perceptual illusions, impossible geometries, and eye-tracking technology to enhance the VR experience. Our experiments involved intricate manipulations in Unreal Engine to convincingly render 3D impossible objects, while addressing the challenges in translating 2D illusions into 3D space and VR environments.**Click here to access the detailed report:**[READ MORE >>](https://assets.nicepagecdn.com/a7c2be37/6110704/files/VRDesignincontextgroupfinalreport.pdf)**
+import coverImg from "./vr-design-in-context-impossible-geometry/cover.svg";
+
+export const cover = coverImg;
+
+## Overview
+
+How do you make an "impossible" object feel believable in VR? Our design-in-context study explored that by building camera-dependent sculptures in Unreal Engine. We studied Escher-inspired illusions, replicated them in 3D, then evaluated how users perceive them when they walk around the piece.
+
+## Approach
+
+- Modeled candidate objects whose silhouettes only align from specific viewpoints.
+- Authored blueprints that swap meshes and shader cutoff planes based on the user’s head position.
+- Used eye-tracking data (on supported headsets) to bias which segments should remain coherent in the player’s foveal region.
+
+## Challenges Learned
+
+- Maintaining the illusion requires tightly controlling parallax; we lerped between hidden proxy meshes as viewers moved.
+- Lighting must avoid harsh shadows that reveal the hack—so we leaned on ambient occlusion and stylized gradients instead of direct lights.
+- Translating 2D illusions to VR highlighted comfort concerns; abrupt pop transitions caused discomfort, so we introduced smooth blends.
+
+## Outcome
+
+The resulting sandbox lets instructors and researchers toggle different illusion styles, making it a useful reference for future machine vision and design studies. Full implementation details and evaluation notes live in the linked report.

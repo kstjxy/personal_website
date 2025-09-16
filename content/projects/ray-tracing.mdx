@@ -1,73 +1,47 @@
 ---
 title: "Ray Tracing"
 slug: "ray-tracing"
-date: "2025-09-13"
-role: ["Xiaoyue (Crystal) Jin Programmer"]
-summary: "This is a course project for CS4620: Intro to Computer Graphics at Cornell University. I wrote a ray tracing algorithm in Python and ultimately rendered a chessboard as the final product."
-tags: ["Python", "Ray Tracing", "AR"]
-highlight: "False"
+date: "2023-11-15"
+role: ["Graphics Programmer"]
+summary: "Python ray tracer built for Cornell CS4620—supporting multiple primitives, textured materials, reflections, and Fusion 360 assets."
+tags: ["Python", "Ray Tracing", "Rendering"]
+highlight: false
 cover: ""
 links: [{ label: "Original Page", href: "https://xiaoyuejin.com/ray-tracing/" }]
 ---
 
-- [Overview](#overview)
-- [Features](#features)
-- [Final Display](#final-display)
+import Gallery from "@/components/mdx/Gallery";
+import coverImg from "./ray-tracing/cover.png";
 
-**This is a course project for CS4620: Intro to Computer Graphics at Cornell University. I wrote a ray tracing algorithm in Python and ultimately rendered a chessboard as the final product.**
+export const cover = coverImg;
 
-### Features
+## Overview
 
-#### Geometric Primitives
+For CS4620 I wrote a CPU ray tracer in Python, then modeled a chess vignette to stress-test the pipeline. The renderer handles multiple primitives, hierarchical transforms, and material effects so I could focus on lighting and composition.
 
-This ray tracing algorithm supports rendering five different geometric primitives:
+## Rendering Features
 
-- Sphere
-- Triangle
-- Cylinder
-- Cone
-- Plane
+- **Primitives:** Sphere, triangle, cylinder, cone, and plane classes with dedicated intersection routines.
+- **Lighting:** Ambient + point lights with Phong shading and recursive mirror reflections.
+- **Materials:** Checkerboard texture sampler that swaps material properties based on UV position.
+- **Mesh loader:** Imported Fusion 360 assets via Blender-exported OBJ files for rooks, knights, and crosses.
 
-Each primitive has a corresponding class to store its data and an intersect function.
+## Implementation Notes
 
-![img](/projects/ray-tracing/Screenshot2023-12-21at11.15.33PM-3.png)
+- Structured each primitive as a Python dataclass with a shared `intersect(ray)` signature.
+- Built a shading pipeline that resolves surface normals, runs texture lookup, then blends diffuse/specular terms.
+- Authored Blender reference scenes to match camera framing and place imported models accurately.
 
-Compute shading for a ray-surface intersection
+![Shading debug view showing normal vectors](/projects/ray-tracing/Screenshot2023-12-21at11.15.33PM-3.png)
 
-![img](/projects/ray-tracing/Screenshot2023-12-21at11.09.46PM-3.png)
+![OBJ import and placement workflow](/projects/ray-tracing/unnamed5-2.png)
 
-Sphere initalization function
+## Final Renders
 
-![img](/projects/ray-tracing/Screenshot2023-12-21at11.10.08PM.png)
-
-Sphere initalization function
-
-#### Light Sources
-
-This ray tracing algorithm supports both Point Light and Ambient Light, as well as a mirror reflection effect.
-
-### Texture Mapping
-
-I introduced checkerboard texture mapping by creating a Texture Class and modifying the Material class and shade function. The Texture Class features functions to initialize the checkerboard texture with a specified height, width, and two distinct colored materials. It also includes a function to determine the material based on the hitpoint’s position. During shading, if the hit material has a texture, I use the Texture class function to update the hit material with the corresponding material.
-
-### Obj Loader
-
-I introduced 3 different obj files for the chess structures – the horse head, the cross, and the fortress head. All of them are built in Fusion 360 and converted to the desired obj file format through Blender.
-
-![img](/projects/ray-tracing/Screenshot2023-12-21at11.17.40PM-1.png)
-
-Additionally, I set up our scene in Blender as a reference for camera and model locations.
-
-![img](/projects/ray-tracing/unnamed5-2.png)
-
-### Final Display
-
-![img](/projects/ray-tracing/unnamed6-1.png)
-
-![img](/projects/ray-tracing/unnamed7.png)
-
-1024 Version
-
-![img](/projects/ray-tracing/Image_Video3-1-1.png)
-
-2024 Version
+<Gallery
+  images={[
+    { src: "/projects/ray-tracing/unnamed6-1.png", alt: "Final chess scene render" },
+    { src: "/projects/ray-tracing/unnamed7.png", alt: "Alternate camera angle" },
+    { src: "/projects/ray-tracing/Image_Video3-1-1.png", alt: "High-resolution output" },
+  ]}
+/>
