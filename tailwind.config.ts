@@ -113,21 +113,47 @@ export default {
         css: {
           color: "hsl(var(--foreground))",
           maxWidth: "none",
+          ul: {
+            listStyleType: "disc",
+            paddingLeft: "1.375rem",
+            marginBottom: "0.75em",
+            li: {
+              marginTop: "0.35em",
+              marginBottom: "0.35em",
+            },
+          },
+          ol: {
+            listStyleType: "decimal",
+            paddingLeft: "1.375rem",
+            marginBottom: "0.75em",
+            li: {
+              marginTop: "0.35em",
+              marginBottom: "0.35em",
+            },
+          },
           h1: {
             color: "hsl(var(--foreground))",
             fontWeight: "700",
+            marginTop: "1.5em",
+            marginBottom: "0.75em",
           },
           h2: {
             color: "hsl(var(--foreground))",
             fontWeight: "600",
+            marginTop: "1.5em",
+            marginBottom: "0.6em",
           },
           h3: {
             color: "hsl(var(--foreground))",
             fontWeight: "600",
+            marginTop: "1.2em",
+            marginBottom: "0.5em",
           },
           h4: {
             color: "hsl(var(--foreground))",
             fontWeight: "600",
+            marginTop: "1em",
+            marginBottom: "0.4em",
           },
           strong: {
             color: "hsl(var(--foreground))",
@@ -143,12 +169,6 @@ export default {
           blockquote: {
             color: "hsl(var(--muted-foreground))",
             borderLeftColor: "hsl(var(--border))",
-          },
-          "ul > li": {
-            paddingLeft: "0",
-          },
-          "ol > li": {
-            paddingLeft: "0",
           },
           "ul > li::marker": {
             color: "hsl(var(--muted-foreground))",

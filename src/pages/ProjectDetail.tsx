@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { getProjectBySlug } from "@/lib/content";
 import { MDXProvider } from "@mdx-js/react";
-import SectionNav from "@/components/SectionNav";
 import Gallery from "@/components/mdx/Gallery";
 import LinkButtons from "@/components/mdx/LinkButtons";
 import QuickLinks from "@/components/mdx/QuickLinks";
@@ -34,27 +33,17 @@ const ProjectDetail = () => {
     );
   }
 
-  const sectionItems = project.sections ?? [
-    { id: "overview", label: "Overview" },
-    { id: "game-details", label: "Game Details" },
-    { id: "my-duties", label: "My Duties" },
-  ];
-
   return (
     <div>
-      <SectionNav
-        items={sectionItems}
-        left={
-          <Button asChild variant="ghost" size="sm">
-            <Link to="/work">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Projects
-            </Link>
-          </Button>
-        }
-      />
+      <div className="mx-auto flex max-w-4xl items-center justify-between gap-3 px-6 pt-6">
+        <Button asChild variant="ghost" size="sm">
+          <Link to="/work">
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Back to Projects
+          </Link>
+        </Button>
+      </div>
 
-      {/* Header text below nav */}
       <div className="mx-auto max-w-4xl p-6">
         <div className="flex flex-wrap items-center justify-between gap-3 text-sm text-muted-foreground">
           <div className="flex flex-wrap items-center gap-3">

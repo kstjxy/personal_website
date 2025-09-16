@@ -1,32 +1,63 @@
 ---
-title: "Unity Minecraft"
+title: "Unity Minecraft Replica"
 slug: "unity-minecraft"
-date: "2025-09-13"
-role: ["Xiaoyue (Crystal) Jin Programmer"]
-summary: "This is the final project for the course CS4621: Graphics Practicum at Cornell University, where we made a revamped edition of Minecraft in Unity with an advanced simulated environment that integrates various graphic and interactive features, aiming to enhance user experience in "
-tags: ["Unity", "AR", "AI", "Minecraft"]
-highlight: "False"
+date: "2023-12-15"
+role: ["Programmer", "Technical Artist"]
+summary: "Unity-powered reinterpretation of Minecraft for Cornell's CS4621 practicum, featuring procedural terrain, volumetric clouds, and interactive world editing tools."
+tags: ["Unity", "Graphics", "Procedural Generation", "Minecraft"]
+highlight: false
 cover: ""
-links: [{ label: "Original Page", href: "https://xiaoyuejin.com/unity-minecraft/" }]
-sections:
-  - { id: "overview", label: "Overview" }
+links:
+  - {
+      label: "Technical Write-up",
+      href: "https://assets.nicepagecdn.com/a7c2be37/6110704/files/Writeup.pdf",
+    }
 ---
 
-**This is the final project for the course CS4621: Graphics Practicum at Cornell University, where we made a revamped edition of Minecraft in Unity with an advanced simulated environment that integrates various graphic and interactive features, aiming to enhance user experience in a dynamically rendered world.**  
-Key features include:
+import YouTube from "@/components/mdx/YouTube";
+import coverImg from "./unity-minecraft/cover.png";
 
-- **Voxel Data Generation:** Creating detailed landscapes using voxel technology.
-- **Landscape Generation:** Automatic generation of diverse terrains.
-- **Texture Mapping:** Applying realistic textures to surfaces.
-- **Navigation System:** Enabling user movement through the environment.
-- **Flock Simulation for Enemies:** Simulating enemy movements in groups.
-- **Interactive Toolbar Canvas:** Providing tools for user interaction.
-- **Dynamic Terrain Manipulation:** Allowing users to modify the landscape in real-time.
-- **Tree Generation:** Creating lifelike trees within the environment.
-- **Day/Night Cycles:** Simulating natural time progression.
-- **Realistic Textures:** Implementing water and sand textures.
-- **Rain and Particle System:** Enhancing realism with weather effects.
-- **Cloud Generation:** Using noise maps and ray marching for realistic clouds.
-- **Character Navigation:** A third-person-view camera for character movement.
+export const cover = coverImg;
 
-Click here to access the detailed report:**[READ MORE >>](https://assets.nicepagecdn.com/a7c2be37/6110704/files/Writeup.pdf)**
+## Overview
+
+**Unity Minecraft** is a semester project for Cornell's CS4621 Graphics Practicum. We rebuilt the core Minecraft loop with modern rendering, smoother controls, and livelier simulation. I co-led engineering for world generation, performance tuning, and interaction polish alongside four teammates.
+
+<YouTube
+  url="https://youtu.be/338MKOXUzz4"
+  title="Unity Minecraft Gameplay Overview"
+  className="my-6"
+/>
+
+- **Engine:** Unity HDRP on PC with a third-person camera.
+- **Timeline:** 14 weeks with a five-person team (two programmers, two technical artists, one designer).
+
+## World & Visuals
+
+Highlights from the environment stack:
+
+- **Procedural biomes:** Layered Perlin noise keeps voxel terrain and foliage transitions seamless.
+- **Dynamic sky:** Ray-marched volumetric clouds, day/night progression, and sunlight scattering.
+- **Weather shaders:** Rain, puddles, and wet-surface reflections scale with storm intensity.
+- **Material library:** PBR textures power animated water, sand displacement, and emissive blocks.
+
+Optimized chunk streaming and greedy meshing hold 60+ FPS even while sprinting across the map, while cascaded shadows and SSAO keep the scenes cohesive without overwhelming mid-range GPUs.
+
+## Gameplay Systems
+
+Exploration systems tie the world together:
+
+- **Toolbar canvas:** Unified crafting, equipment, and block placement for controller or mouse.
+- **Dig & build toolkit:** Real-time carving, block placement, and reusable macros for structures.
+- **Flocking AI:** Patrol behaviors that respond to player proximity and environmental hazards.
+- **Resource spawners:** Per-biome tunables for ore, flora, wildlife, and ambient events.
+
+## My Contributions
+
+My focus areas:
+
+- **World streaming:** Voxel data generation, greedy meshing, and GPU instancing for steady 60 FPS.
+- **Environment simulation:** Day/night cycle, volumetric clouds, and weather triggers wired to gameplay.
+- **Interaction design:** Third-person controller, navigation smoothing, and toolbar UX that keeps building fast.
+
+The result is a Minecraft homage with modern rendering and responsive tools that still feels approachable for future contributors.

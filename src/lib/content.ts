@@ -14,7 +14,6 @@ export interface Project {
   monthLabel: string;
   content: string;
   MDXContent?: React.ComponentType;
-  sections?: { id: string; label: string }[];
   links?: { label: string; href: string }[];
 }
 
@@ -30,7 +29,6 @@ type MDXModule = {
     summary: string;
     tags?: string[];
     highlight?: boolean;
-    sections?: { id: string; label: string }[];
     links?: { label: string; href: string }[];
   };
   // Optional named exports from MDX for assets
@@ -68,7 +66,6 @@ function processModule(filePath: string, mod: MDXModule): Project {
     monthLabel,
     content: "",
     MDXContent: mod.default,
-    sections: fm.sections,
     links: fm.links,
   };
 }
