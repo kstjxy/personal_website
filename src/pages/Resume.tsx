@@ -1,5 +1,4 @@
-import { Button } from "@/components/ui/button";
-import { Download, ExternalLink } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 
 const Resume = () => {
   return (
@@ -11,19 +10,7 @@ const Resume = () => {
         </p>
       </div>
 
-      {/* Download Section */}
-      <div className="mb-8 rounded-xl border bg-card p-4 shadow-card">
-        <div className="flex items-center justify-between">
-          <div>
-            <h2 className="font-semibold text-card-foreground">Download Resume</h2>
-            <p className="text-sm text-muted-foreground">PDF format • Last updated March 2024</p>
-          </div>
-          <Button>
-            <Download className="mr-2 h-4 w-4" />
-            Download PDF
-          </Button>
-        </div>
-      </div>
+      {/* No download section per request */}
 
       {/* Resume Content */}
       <div className="space-y-8">
@@ -36,16 +23,65 @@ const Resume = () => {
             <div>
               <div className="mb-2 flex items-start justify-between">
                 <div>
-                  <h3 className="font-medium text-foreground">Independent Game Developer</h3>
-                  <p className="text-muted-foreground">Personal Projects</p>
+                  <h3 className="font-medium text-foreground">Game Developer Intern — Tencent</h3>
+                  <p className="text-muted-foreground">Guangzhou, China</p>
                 </div>
-                <span className="text-sm text-muted-foreground">2023 - Present</span>
+                <span className="text-sm text-muted-foreground">June 2024 – August 2024</span>
               </div>
               <ul className="ml-4 space-y-1 text-sm text-muted-foreground">
-                <li>• Developed 5+ complete game projects using Unity and Unreal Engine</li>
-                <li>• Implemented AI systems and procedural generation algorithms</li>
-                <li>• Created multiplayer networked games with custom netcode</li>
-                <li>• Collaborated with teams of 2-5 developers on larger projects</li>
+                <li>
+                  • Top 3 contributor to open‑source minigame‑unity‑webgl‑transform (3.4k★); ported
+                  Unity games to WeChat Mini‑Game via WebGL/Wasm; reviewed PRs and supported
+                  external devs.
+                </li>
+                <li>
+                  • Maintained 10+ public demos and upgraded projects to new Unity LTS; resolved 5+
+                  public issues; built TCP/UDP networking and gameclub API demos.
+                </li>
+              </ul>
+            </div>
+            <div>
+              <div className="mb-2 flex items-start justify-between">
+                <div>
+                  <h3 className="font-medium text-foreground">
+                    Game Developer Intern — Lingxi Games (Alibaba)
+                  </h3>
+                  <p className="text-muted-foreground">Guangzhou, China</p>
+                </div>
+                <span className="text-sm text-muted-foreground">June 2023 – August 2023</span>
+              </div>
+              <ul className="ml-4 space-y-1 text-sm text-muted-foreground">
+                <li>
+                  • Built a config‑driven Python pipeline to translate Excel sheets into Lua with
+                  Jinja; cut iteration from ~30 min to ~1 min.
+                </li>
+                <li>
+                  • Refactored season‑rewards UI in Lua/FairyGUI with data‑driven column merging;
+                  prototyped SRPG/Contra‑style mechanics on in‑house engine.
+                </li>
+              </ul>
+            </div>
+            <div>
+              <div className="mb-2 flex items-start justify-between">
+                <div>
+                  <h3 className="font-medium text-foreground">
+                    Game Developer Intern — 4399 Network
+                  </h3>
+                  <p className="text-muted-foreground">Guangzhou, China</p>
+                </div>
+                <span className="text-sm text-muted-foreground">June 2022 – August 2022</span>
+              </div>
+              <ul className="ml-4 space-y-1 text-sm text-muted-foreground">
+                <li>
+                  • Led 3‑person team to build TexasHoldemBattle, a Unity online Poker arena for AI
+                  bots; organized a 50+‑participant internal contest and synthesized
+                  recommendations.
+                </li>
+                <li>
+                  • Engineered a modular integration stack for C# modules, Lua scripts, and
+                  WebSocket APIs; added configurable tournaments, adjustable sim speeds, and
+                  event‑log replays.
+                </li>
               </ul>
             </div>
           </div>
@@ -56,17 +92,35 @@ const Resume = () => {
           <h2 className="mb-4 border-b border-border pb-2 text-xl font-semibold text-foreground">
             Education
           </h2>
-          <div>
-            <div className="mb-2 flex items-start justify-between">
-              <div>
-                <h3 className="font-medium text-foreground">Computer Science</h3>
-                <p className="text-muted-foreground">University • Focus on Game Development</p>
+          <div className="space-y-6">
+            <div>
+              <div className="mb-1 flex items-start justify-between">
+                <div>
+                  <h3 className="font-medium text-foreground">University of Pennsylvania</h3>
+                  <p className="text-muted-foreground">
+                    Dual MSE in CGGT & Computer Science • GPA 3.95
+                  </p>
+                </div>
+                <span className="text-sm text-muted-foreground">Aug 2024 – Dec 2026</span>
               </div>
-              <span className="text-sm text-muted-foreground">2022 - 2026</span>
+              <p className="ml-4 text-sm text-muted-foreground">
+                Coursework: Game Design, GPU Programming, PBR, Procedural Graphics
+              </p>
             </div>
-            <p className="ml-4 text-sm text-muted-foreground">
-              Relevant coursework: Computer Graphics, AI, Data Structures, Software Engineering
-            </p>
+            <div>
+              <div className="mb-1 flex items-start justify-between">
+                <div>
+                  <h3 className="font-medium text-foreground">Cornell University</h3>
+                  <p className="text-muted-foreground">
+                    B.S. Computer Science • GPA 3.65 • Minors: Game Design, IS (UI/UX), Fine Art
+                  </p>
+                </div>
+                <span className="text-sm text-muted-foreground">Aug 2020 – Dec 2023</span>
+              </div>
+              <p className="ml-4 text-sm text-muted-foreground">
+                Coursework: Operating Systems, Algorithms, Computer Graphics, 3D Modeling
+              </p>
+            </div>
           </div>
         </section>
 
@@ -79,19 +133,19 @@ const Resume = () => {
             <div>
               <h3 className="mb-2 font-medium text-foreground">Programming Languages</h3>
               <p className="text-sm text-muted-foreground">
-                C#, C++, Python, JavaScript, TypeScript, HLSL
+                C++, C#, Lua, Python, Java, HTML/CSS, GLSL, TypeScript
               </p>
             </div>
             <div>
               <h3 className="mb-2 font-medium text-foreground">Game Engines & Tools</h3>
               <p className="text-sm text-muted-foreground">
-                Unity, Unreal Engine, Blender, Git, Perforce
+                Unity, Unreal Engine, CUDA, CUGL, LibGDX, OpenGL, Qt
               </p>
             </div>
             <div>
               <h3 className="mb-2 font-medium text-foreground">Specializations</h3>
               <p className="text-sm text-muted-foreground">
-                AI/ML, Procedural Generation, Network Programming, Game Design
+                Procedural Rendering, Real‑time Graphics, Networking, UI/UX
               </p>
             </div>
             <div>
@@ -109,28 +163,20 @@ const Resume = () => {
           <div className="space-y-4">
             <div>
               <div className="mb-1 flex items-center gap-2">
-                <h3 className="font-medium text-foreground">Neural Dream Engine</h3>
-                <Button variant="ghost" size="sm" asChild>
-                  <a href="/work/neural-dream-engine">
-                    <ExternalLink className="h-3 w-3" />
-                  </a>
-                </Button>
+                <h3 className="font-medium text-foreground">Physically Based Renderer</h3>
               </div>
               <p className="text-sm text-muted-foreground">
-                AI-powered game engine with real-time procedural environment generation
+                OpenGL deferred renderer with Cook–Torrance BRDF, HDR, SSR, and SDF ray‑marching for
+                subsurface effects.
               </p>
             </div>
             <div>
               <div className="mb-1 flex items-center gap-2">
-                <h3 className="font-medium text-foreground">Quantum Puzzle Mechanics</h3>
-                <Button variant="ghost" size="sm" asChild>
-                  <a href="/work/quantum-puzzle-mechanics">
-                    <ExternalLink className="h-3 w-3" />
-                  </a>
-                </Button>
+                <h3 className="font-medium text-foreground">DDMaya Plugin</h3>
               </div>
               <p className="text-sm text-muted-foreground">
-                Educational puzzle game teaching quantum physics concepts
+                C++ Maya deformer implementing Direct Delta Mush with Eigen; real‑time viewport UI
+                with PyMEL/Qt tools.
               </p>
             </div>
           </div>

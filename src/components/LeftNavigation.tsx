@@ -14,8 +14,8 @@ const LeftNavigation = () => {
     <aside className="sticky top-0 flex h-screen w-[260px] flex-col border-r border-nav-border bg-nav p-6">
       {/* Site Header */}
       <div className="mb-8">
-        <h1 className="mb-2 text-2xl font-bold text-foreground">Xiaoyue Jin</h1>
-        <p className="text-sm text-muted-foreground">Portfolio</p>
+        <h1 className="mb-1 text-2xl font-bold text-foreground">Xiaoyue Jin</h1>
+        <p className="text-sm text-muted-foreground">Software & Gameplay/Graphics Engineer</p>
       </div>
 
       {/* Navigation */}
@@ -42,15 +42,17 @@ const LeftNavigation = () => {
       <div className="mt-auto rounded-xl border bg-card p-4 shadow-card">
         <div className="mb-3">
           <h3 className="mb-1 font-semibold text-card-foreground">Xiaoyue Jin</h3>
-          <p className="mb-2 text-sm text-muted-foreground">Game Developer & Designer</p>
+          <p className="mb-2 text-sm text-muted-foreground">
+            C++ • TypeScript • Java • Unity • Unreal • Lua • OpenGL • CUDA
+          </p>
         </div>
 
-        <div className="space-y-2">
+        <div className="space-y-1">
           <Badge variant="secondary" className="text-xs">
-            Available for Internships
+            Open to SWE & Gameplay internship roles
           </Badge>
           <p className="text-xs text-muted-foreground">
-            Specializing in gameplay programming, AI systems, and procedural generation.
+            Rendering • Gameplay systems • Networking • UI/UX
           </p>
         </div>
       </div>
