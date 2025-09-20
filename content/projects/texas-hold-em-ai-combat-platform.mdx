@@ -13,6 +13,11 @@ links:
 
 import Gallery from "@/components/mdx/Gallery";
 import coverImg from "./texas-hold-em-ai-combat-platform/cover.png";
+import thLobby from "./texas-hold-em-ai-combat-platform/1280X1280.png";
+import thOverlay from "./texas-hold-em-ai-combat-platform/1280X12802.png";
+import thRound from "./texas-hold-em-ai-combat-platform/ef3cf60d-972a-48eb-a56e-e988dd6180a6-1.png";
+import thCsharp from "./texas-hold-em-ai-combat-platform/Screenshot2023-12-21at2.44.09AM-1.png";
+import thLua from "./texas-hold-em-ai-combat-platform/Screenshot2023-12-21at2.48.13AM-4.png";
 
 export const cover = coverImg;
 
@@ -28,12 +33,9 @@ During my 2022 game studio internship I led a three-person pod to build a Texas 
 
 <Gallery
   images={[
-    { src: "/projects/texas-hold-em-ai-combat-platform/1280X1280.png", alt: "Lobby configuration" },
-    { src: "/projects/texas-hold-em-ai-combat-platform/1280X12802.png", alt: "Live match overlay" },
-    {
-      src: "/projects/texas-hold-em-ai-combat-platform/ef3cf60d-972a-48eb-a56e-e988dd6180a6-1.png",
-      alt: "Round summary",
-    },
+    { src: thLobby, alt: "Lobby configuration" },
+    { src: thOverlay, alt: "Live match overlay" },
+    { src: thRound, alt: "Round summary" },
   ]}
 />
 
@@ -43,9 +45,9 @@ During my 2022 game studio internship I led a three-person pod to build a Texas 
 2. **Lua modules:** Mirror the C# API with `startfunction`, `round_start`, `action`, and `finalcards`, accessing shared `gamestat` values from the host.
 3. **WebSocket clients:** Communicate with the `WebAI` bridge. Receive serialized state payloads and reply with actions via socket message types.
 
-![C# interface skeleton and gamestat payload](/projects/texas-hold-em-ai-combat-platform/Screenshot2023-12-21at2.44.09AM-1.png)
+<img src={thCsharp} alt="C# interface skeleton and gamestat payload" />
 
-![Lua module contract](/projects/texas-hold-em-ai-combat-platform/Screenshot2023-12-21at2.48.13AM-4.png)
+<img src={thLua} alt="Lua module contract" />
 
 ## My Contributions
 

@@ -1,46 +1,95 @@
 ---
-title: "Computational Shapes"
+title: "LibGDXGeo -- Computational Shapes"
 slug: "computational-shapes"
 date: "2024-05-01"
 role: ["Programmer"]
 summary: "Ported Cornell's CUGL geometry toolkit into LibGDX, adding shape generation, extrusion, and spline tooling directly into the engine."
-tags: ["LibGDX", "Geometry", "Tooling", "Procedural Generation", "Graphics"]
+tags:
+  ["LibGDX", "Geometry", "Tooling", "Procedural Generation", "Graphics", "Spline", "Path Smoother"]
 highlight: false
 cover: ""
-links: [{ label: "Original Page", href: "https://xiaoyuejin.com/computational-shapes/" }]
+links: []
 ---
 
 import Gallery from "@/components/mdx/Gallery";
-import coverImg from "./computational-shapes/cover.jpg";
-
-export const cover = coverImg;
+import csState1 from "./computational-shapes/38171702957511_.pic_-2.jpg";
+import csCover from "./computational-shapes/cover.jpg";
+import csShot from "./computational-shapes/Screenshot2023-12-22at3.29.47AM-1.png";
+import YouTube from "@/components/mdx/YouTube";
 
 ## Overview
 
 LibGDX ships without higher-level tools for drawing and manipulating polygons. To unblock our workflow, I ported Cornell's CUGL geometry module into LibGDX and wrapped it with an interactive demo suite. The toolkit now covers polyline authoring, extrusion, smoothing, and spline generation directly in engine.
 
-## Demo States
+<YouTube url="https://youtu.be/F0z_CHrAQ2Q" title="Computational Shapes Demo" className="my-6" />
 
-- **PolyFactory:** Quick-build Poly2 shapes (triangles, arcs, rounded rectangles) and preview them as textured polygon regions.
-- **PathFactory:** Generate Path2 skeletons and extrude them into hollow geometry using the SimpleExtruder helper.
-- **Extruder settings:** Toggle join/end caps to evaluate how profiles render when swept into solids.
-- **PathSmoother:** Draw freehand curves, then apply Douglas–Peucker simplification to reduce nodes while preserving silhouette.
-- **Spline:** Place anchor points that convert to Spline2 curves, back into paths, and finally to renderable polygons.
+## Demo Walkthrough
 
-<Gallery
-  ui={{ dots: true }}
-  images={[
-    { src: "/projects/computational-shapes/38171702957511_.pic_-2.jpg", alt: "PathFactory demo" },
-    {
-      src: "/projects/computational-shapes/38181702957511_.pic_-1.jpg",
-      alt: "Extruder join and end caps",
-    },
-    {
-      src: "/projects/computational-shapes/38191702957554_.pic_.jpg",
-      alt: "Path smoothing results",
-    },
-  ]}
-/>
+<div className="not-prose my-8 space-y-12">
+  {/* State 1: text left, image right */}
+  <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-2">
+    <div>
+      <h4 className="text-lg font-semibold text-foreground">State 1: PathFactory</h4>
+      <p className="mt-2 text-sm text-muted-foreground">
+        Using PathFactory to construct different Path2 shapes, then extruding them with SimpleExtruder into
+        hollow Poly2 objects at a fixed width. Finally, converting to PolygonRegion with a flat texture for display.
+      </p>
+    </div>
+    <div className="rounded-lg bg-muted">
+      <img src={csState1} alt="PathFactory placeholder" className="h-auto w-full rounded-md" />
+    </div>
+  </div>
+
+{/* State 2: image left, text right */}
+
+<div className="grid grid-cols-1 items-start gap-6 md:grid-cols-2">
+  <div className="order-2 rounded-lg bg-muted md:order-1">
+    <img src={csCover} alt="Extruder placeholder" className="h-auto w-full rounded-md" />
+  </div>
+  <div className="order-1 md:order-2">
+    <h4 className="text-lg font-semibold text-foreground">State 2: Extruder</h4>
+    <p className="mt-2 text-sm text-muted-foreground">
+      Demonstrating different <code>joinCap</code> and <code>endCap</code> options when converting a
+      Path2 to Poly2 through the SimpleExtruder class.
+    </p>
+  </div>
+</div>
+
+{/* State 3: text left, image right */}
+
+<div className="grid grid-cols-1 items-start gap-6 md:grid-cols-2">
+  <div>
+    <h4 className="text-lg font-semibold text-foreground">State 3: PathSmoother</h4>
+    <p className="mt-2 text-sm text-muted-foreground">
+      Press and drag to create a Path2, extrude to display it, then smooth with Douglas–Peucker to
+      reduce points while preserving the silhouette. Input and output point counts are shown on
+      screen.
+    </p>
+  </div>
+  <div className="rounded-lg bg-muted">
+    <img
+      src="/placeholder.svg"
+      alt="PathSmoother placeholder"
+      className="h-auto w-full rounded-md"
+    />
+  </div>
+</div>
+
+{/* State 4: image left, text right */}
+
+  <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-2">
+    <div className="order-2 rounded-lg bg-muted md:order-1">
+      <img src="/placeholder.svg" alt="Spline placeholder" className="h-auto w-full rounded-md" />
+    </div>
+    <div className="order-1 md:order-2">
+      <h4 className="text-lg font-semibold text-foreground">State 4: Spline</h4>
+      <p className="mt-2 text-sm text-muted-foreground">
+        Click to place anchors. With 4+ anchors, render a Spline2 of cubic Bézier segments. Pipeline: Spline2 →
+        SplinePather → Path2 → SimpleExtruder → Poly2 → PolygonRegion.
+      </p>
+    </div>
+  </div>
+</div>
 
 ## Key Classes
 
@@ -50,4 +99,4 @@ LibGDX ships without higher-level tools for drawing and manipulating polygons. T
 - **PathFactory & PolyFactory:** Convenience constructors for common primitives with configurable dimensions and offsets.
 - **PathSmoother & SimpleExtruder:** Utility classes that smooth user input and create solid meshes from open paths.
 
-![Tooling screenshot: Path2 API overview](/projects/computational-shapes/Screenshot2023-12-22at3.29.47AM-1.png)
+<img src={csShot} alt="Tooling screenshot: Path2 API overview" />

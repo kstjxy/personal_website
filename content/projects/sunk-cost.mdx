@@ -12,6 +12,10 @@ links: [{ label: "Original Page", href: "https://xiaoyuejin.com/sunk-cost/" }]
 
 import Gallery from "@/components/mdx/Gallery";
 import coverImg from "./sunk-cost/cover.png";
+import scThumb4 from "./sunk-cost/thumbnail4.png";
+import scScreen from "./sunk-cost/Screenshot2023-12-19at3.53.24AM.png";
+import scThumb3 from "./sunk-cost/thumbnail3.png";
+import scArch from "./sunk-cost/ArchitectureSpecification-4.png";
 
 export const cover = coverImg;
 
@@ -27,9 +31,9 @@ Sunk Cost is a head-to-head RTS/stealth experience built in the Cornell Universi
 
 <Gallery
   images={[
-    { src: "/projects/sunk-cost/thumbnail4.png", alt: "Diver gameplay" },
-    { src: "/projects/sunk-cost/Screenshot2023-12-19at3.53.24AM.png", alt: "Spirit placement" },
-    { src: "/projects/sunk-cost/thumbnail3.png", alt: "Split role session" },
+    { src: scThumb4, alt: "Diver gameplay" },
+    { src: scScreen, alt: "Spirit placement" },
+    { src: scThumb3, alt: "Split role session" },
   ]}
 />
 
@@ -46,4 +50,4 @@ Sunk Cost is a head-to-head RTS/stealth experience built in the Cornell Universi
 - **Spirit mechanics:** Implemented the four signature spirit abilities (possessions, trap triggers, decoys, and ultimate lockdown) plus their animation hooks.
 - **Team leadership:** Coordinated the eight-person crew, resolved merge conflicts, and aligned gameplay cadence with art deliverables.
 
-![Dependency diagram for Sunk Cost architecture](/projects/sunk-cost/ArchitectureSpecification-4.png)
+<img src={scArch} alt="Dependency diagram for Sunk Cost architecture" />

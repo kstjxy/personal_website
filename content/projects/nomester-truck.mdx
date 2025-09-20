@@ -19,6 +19,12 @@ links:
 
 import Gallery from "@/components/mdx/Gallery";
 import coverImg from "./nomester-truck/hero.png";
+import ntShot1 from "./nomester-truck/screenshot_3-2.png";
+import ntShot2 from "./nomester-truck/screenshot_5-3.png";
+import ntShot3 from "./nomester-truck/screenshot_4-2.png";
+import ntPattern from "./nomester-truck/图层-1-1-2.png";
+import ntMenu from "./nomester-truck/screenshot_1-8.png";
+import ntCRC from "./nomester-truck/Screenshot2023-12-20at8.14.29AM-6.png";
 
 export const cover = coverImg;
 
@@ -35,9 +41,9 @@ Nomester Truck is our CS3152: Introduction to Game Architecture capstone. The pi
 <Gallery
   ui={{ peek: true }}
   images={[
-    { src: "/projects/nomester-truck/screenshot_3-2.png", alt: "Recipe crafting" },
-    { src: "/projects/nomester-truck/screenshot_5-3.png", alt: "Enemy avoidance" },
-    { src: "/projects/nomester-truck/screenshot_4-2.png", alt: "Forest exit" },
+    { src: ntShot1, alt: "Recipe crafting" },
+    { src: ntShot2, alt: "Enemy avoidance" },
+    { src: ntShot3, alt: "Forest exit" },
   ]}
 />
 
@@ -47,7 +53,7 @@ Nomester Truck is our CS3152: Introduction to Game Architecture capstone. The pi
 - Built encounter patterns that emphasize two pillars: frantic multitasking and deliberate planning.
 - Crafted progression that teaches recipe timing, patrolling enemy reads, and resource trade-offs.
 
-![Level pattern board showing puzzle layouts](/projects/nomester-truck/图层-1-1-2.png)
+<img src={ntPattern} alt="Level pattern board showing puzzle layouts" />
 
 ## UX & Systems
 
@@ -55,6 +61,6 @@ Nomester Truck is our CS3152: Introduction to Game Architecture capstone. The pi
 - Produced screenflow and CRC diagrams that aligned the team on module boundaries.
 - Implemented core modules: scene transitions, truck AI state machine, and cooking interactions.
 
-![Final main menu layout](/projects/nomester-truck/screenshot_1-8.png)
+<img src={ntMenu} alt="Final main menu layout" />
 
-![CRC diagram showing subsystem responsibilities](/projects/nomester-truck/Screenshot2023-12-20at8.14.29AM-6.png)
+<img src={ntCRC} alt="CRC diagram showing subsystem responsibilities" />

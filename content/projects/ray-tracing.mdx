@@ -11,6 +11,11 @@ cover: ""
 
 import Gallery from "@/components/mdx/Gallery";
 import coverImg from "./ray-tracing/cover.png";
+import rtNorms from "./ray-tracing/Screenshot2023-12-21at11.15.33PM-3.png";
+import rtObj from "./ray-tracing/unnamed5-2.png";
+import rtFinal1 from "./ray-tracing/unnamed6-1.png";
+import rtFinal2 from "./ray-tracing/unnamed7.png";
+import rtFinal3 from "./ray-tracing/Image_Video3-1-1.png";
 
 export const cover = coverImg;
 
@@ -31,16 +36,16 @@ For CS4620 I wrote a CPU ray tracer in Python, then modeled a chess vignette to 
 - Built a shading pipeline that resolves surface normals, runs texture lookup, then blends diffuse/specular terms.
 - Authored Blender reference scenes to match camera framing and place imported models accurately.
 
-![Shading debug view showing normal vectors](/projects/ray-tracing/Screenshot2023-12-21at11.15.33PM-3.png)
+<img src={rtNorms} alt="Shading debug view showing normal vectors" />
 
-![OBJ import and placement workflow](/projects/ray-tracing/unnamed5-2.png)
+<img src={rtObj} alt="OBJ import and placement workflow" />
 
 ## Final Renders
 
 <Gallery
   images={[
-    { src: "/projects/ray-tracing/unnamed6-1.png", alt: "Final chess scene render" },
-    { src: "/projects/ray-tracing/unnamed7.png", alt: "Alternate camera angle" },
-    { src: "/projects/ray-tracing/Image_Video3-1-1.png", alt: "High-resolution output" },
+    { src: rtFinal1, alt: "Final chess scene render" },
+    { src: rtFinal2, alt: "Alternate camera angle" },
+    { src: rtFinal3, alt: "High-resolution output" },
   ]}
 />
