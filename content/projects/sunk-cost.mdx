@@ -7,15 +7,30 @@ summary: "Three-month CS4152 RTS/stealth hybrid built in CUGL where a diver and 
 tags: ["C++", "Multiplayer", "Game Design", "Networking", "Strategy"]
 highlight: false
 cover: ""
-links: [{ label: "Original Page", href: "https://xiaoyuejin.com/sunk-cost/" }]
+links:
+  [
+    {
+      label: "Game Showcase",
+      href: "https://gdiac.cs.cornell.edu/gdiac/showcase/gallery/sunkcost/",
+    },
+  ]
 ---
 
 import Gallery from "@/components/mdx/Gallery";
 import coverImg from "./sunk-cost/cover.png";
-import scThumb4 from "./sunk-cost/thumbnail4.png";
-import scScreen from "./sunk-cost/Screenshot2023-12-19at3.53.24AM.png";
-import scThumb3 from "./sunk-cost/thumbnail3.png";
-import scArch from "./sunk-cost/ArchitectureSpecification-4.png";
+import imgDiver from "./sunk-cost/diver.png";
+import imgSpirit from "./sunk-cost/Spirit.png";
+import imgGal1 from "./sunk-cost/gallery1_1.png";
+import imgGal2 from "./sunk-cost/gallery_1_2.png";
+import imgThumb1_3 from "./sunk-cost/thumbnail1_3.png";
+import imgGal2_1 from "./sunk-cost/gallery_2_1.png";
+import imgGal2_2 from "./sunk-cost/gallery_2_2.png";
+import imgGal2_3 from "./sunk-cost/gallery_2_3.png";
+import imgGal2_4 from "./sunk-cost/gallery_2_4.png";
+import imgGal2_5 from "./sunk-cost/gallery_2_5.png";
+import imgGal2_6 from "./sunk-cost/gallery_2_6.png";
+import imgMapEditor from "./sunk-cost/map_editor.jpg";
+import scArch from "./sunk-cost/ArchitectureSpecification-1.png";
 
 export const cover = coverImg;
 
@@ -31,21 +46,59 @@ Sunk Cost is a head-to-head RTS/stealth experience built in the Cornell Universi
 
 <Gallery
   images={[
-    { src: scThumb4, alt: "Diver gameplay" },
-    { src: scScreen, alt: "Spirit placement" },
-    { src: scThumb3, alt: "Split role session" },
+    { src: imgGal1, alt: "Gameplay gallery 1" },
+    { src: imgGal2, alt: "Gameplay gallery 1 — alt angle" },
+    { src: imgThumb1_3, alt: "Gameplay gallery 1 — additional shot" },
   ]}
 />
 
-## Core Mechanics
+# Story
 
-- **Hunter:** Sneak between cover, disable traps, and escape with treasure before oxygen runs out.
-- **Spirit:** Deploy surveillance portraits, trigger traps, and manipulate doors to stall the hunter.
-- **Shared systems:** Server-authoritative networking with deterministic timers keeps both roles synchronized.
+<div className="not-prose my-8">
+  <div className="grid grid-cols-1 items-center gap-6 md:grid-cols-[1fr_minmax(0,2fr)_1fr]">
+    <div className="mx-auto">
+      <img src={imgSpirit} alt="The Spirit" className="h-auto max-h-72 w-auto" />
+    </div>
+    <div>
+      <p className="mb-3 text-base leading-relaxed text-foreground">
+        A Treasure Hunter dives to the ocean deep, seeking riches beyond their wildest dreams.
+      </p>
+      <p className="mb-3 text-base leading-relaxed text-foreground">
+        An ancient shipwreck appears to offer the Hunter refuge from the swirling waters, and
+        potential for an easy score… or so they thought.
+      </p>
+      <p className="mb-3 text-base leading-relaxed text-foreground">
+        They enter, unaware that the ship is controlled by a malicious Spirit, treading upon the
+        submerged graveyard of the former crew.
+      </p>
+      <p className="text-base leading-relaxed text-foreground">
+        The Spirit will do anything to ensure none who lays their eyes on the treasure leaves the
+        ship alive…
+      </p>
+    </div>
+    <div className="mx-auto">
+      <img src={imgDiver} alt="The Diver" className="h-auto max-h-72 w-auto" />
+    </div>
+  </div>
+</div>
 
-## My Contributions
+# Core Mechanics
+
+<Gallery
+  images={[
+    { src: imgGal2_1, alt: "Gameplay gallery 2 - shot 1" },
+    { src: imgGal2_2, alt: "Gameplay gallery 2 - shot 2" },
+    { src: imgGal2_3, alt: "Gameplay gallery 2 - shot 3" },
+    { src: imgGal2_4, alt: "Gameplay gallery 2 - shot 4" },
+    { src: imgGal2_5, alt: "Gameplay gallery 2 - shot 5" },
+    { src: imgGal2_6, alt: "Gameplay gallery 2 - shot 6" },
+  ]}
+/>
+
+# My Contributions
 
 - **Level design:** Assembled the final Tiled map from designer tilesets, then wrote adapters to stream JSON layouts into the engine.
+  <img src={imgMapEditor} alt="Tiled map editor with assembled tilesets" />
 - **Architecture:** Produced MVC dependency diagrams and CRC cards that guided module ownership across the programming pod.
 - **Spirit mechanics:** Implemented the four signature spirit abilities (possessions, trap triggers, decoys, and ultimate lockdown) plus their animation hooks.
 - **Team leadership:** Coordinated the eight-person crew, resolved merge conflicts, and aligned gameplay cadence with art deliverables.

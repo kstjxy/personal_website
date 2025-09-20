@@ -12,10 +12,17 @@ links: []
 ---
 
 import Gallery from "@/components/mdx/Gallery";
-import csState1 from "./computational-shapes/38171702957511_.pic_-2.jpg";
 import csCover from "./computational-shapes/cover.jpg";
-import csShot from "./computational-shapes/Screenshot2023-12-22at3.29.47AM-1.png";
+import imgPathFactory from "./computational-shapes/path_factory.jpg";
+import imgExtruder from "./computational-shapes/extruder.jpg";
+import imgPathSmoother from "./computational-shapes/pathSmoother.jpg";
+import imgSpline from "./computational-shapes/spline.jpg";
+import imgPath2 from "./computational-shapes/path2.png";
+import imgPoly2 from "./computational-shapes/poly2.png";
+import imgSpline2 from "./computational-shapes/spline2.png";
 import YouTube from "@/components/mdx/YouTube";
+
+export const cover = csCover;
 
 ## Overview
 
@@ -36,7 +43,7 @@ LibGDX ships without higher-level tools for drawing and manipulating polygons. T
       </p>
     </div>
     <div className="rounded-lg bg-muted">
-      <img src={csState1} alt="PathFactory placeholder" className="h-auto w-full rounded-md" />
+      <img src={imgPathFactory} alt="PathFactory demo" className="h-auto w-full rounded-md" />
     </div>
   </div>
 
@@ -44,7 +51,11 @@ LibGDX ships without higher-level tools for drawing and manipulating polygons. T
 
 <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-2">
   <div className="order-2 rounded-lg bg-muted md:order-1">
-    <img src={csCover} alt="Extruder placeholder" className="h-auto w-full rounded-md" />
+    <img
+      src={imgExtruder}
+      alt="Extruder join/end cap options"
+      className="h-auto w-full rounded-md"
+    />
   </div>
   <div className="order-1 md:order-2">
     <h4 className="text-lg font-semibold text-foreground">State 2: Extruder</h4>
@@ -68,8 +79,8 @@ LibGDX ships without higher-level tools for drawing and manipulating polygons. T
   </div>
   <div className="rounded-lg bg-muted">
     <img
-      src="/placeholder.svg"
-      alt="PathSmoother placeholder"
+      src={imgPathSmoother}
+      alt="PathSmoother input vs smoothed output"
       className="h-auto w-full rounded-md"
     />
   </div>
@@ -79,7 +90,7 @@ LibGDX ships without higher-level tools for drawing and manipulating polygons. T
 
   <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-2">
     <div className="order-2 rounded-lg bg-muted md:order-1">
-      <img src="/placeholder.svg" alt="Spline placeholder" className="h-auto w-full rounded-md" />
+      <img src={imgSpline} alt="Cubic Bézier spline preview" className="h-auto w-full rounded-md" />
     </div>
     <div className="order-1 md:order-2">
       <h4 className="text-lg font-semibold text-foreground">State 4: Spline</h4>
@@ -99,4 +110,11 @@ LibGDX ships without higher-level tools for drawing and manipulating polygons. T
 - **PathFactory & PolyFactory:** Convenience constructors for common primitives with configurable dimensions and offsets.
 - **PathSmoother & SimpleExtruder:** Utility classes that smooth user input and create solid meshes from open paths.
 
-<img src={csShot} alt="Tooling screenshot: Path2 API overview" />
+<Gallery
+  ui={{ dots: true }}
+  images={[
+    { src: imgPath2, alt: "Path2 API overview" },
+    { src: imgPoly2, alt: "Poly2 triangulated polygon overview" },
+    { src: imgSpline2, alt: "Spline2 curves overview" },
+  ]}
+/>

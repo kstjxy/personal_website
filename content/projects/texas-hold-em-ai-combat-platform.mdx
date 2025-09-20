@@ -7,17 +7,14 @@ summary: "Unity-based platform from my 2022 internship for hosting Texas Hold'em
 tags: ["Unity", "AI", "Tooling", "Networking", "Simulation"]
 highlight: false
 cover: ""
-links:
-  [{ label: "Original Page", href: "https://xiaoyuejin.com/texas-hold-em-ai-combat-platform/" }]
+links: [{ label: "Github Repo", href: "https://github.com/kstjxy/TexasHoldemBattle" }]
 ---
 
 import Gallery from "@/components/mdx/Gallery";
 import coverImg from "./texas-hold-em-ai-combat-platform/cover.png";
-import thLobby from "./texas-hold-em-ai-combat-platform/1280X1280.png";
-import thOverlay from "./texas-hold-em-ai-combat-platform/1280X12802.png";
-import thRound from "./texas-hold-em-ai-combat-platform/ef3cf60d-972a-48eb-a56e-e988dd6180a6-1.png";
-import thCsharp from "./texas-hold-em-ai-combat-platform/Screenshot2023-12-21at2.44.09AM-1.png";
-import thLua from "./texas-hold-em-ai-combat-platform/Screenshot2023-12-21at2.48.13AM-4.png";
+import imgCSharp from "./texas-hold-em-ai-combat-platform/c_sharp.png";
+import imgLua from "./texas-hold-em-ai-combat-platform/lua.png";
+import imgWebSocket from "./texas-hold-em-ai-combat-platform/websocket.jpg";
 
 export const cover = coverImg;
 
@@ -31,23 +28,80 @@ During my 2022 game studio internship I led a three-person pod to build a Texas 
 - **Match loop:** The Unity host iterates through betting rounds, calling each bot’s `BetAction` or equivalent hook. Operators can slow down or accelerate matches for debugging.
 - **Results:** Standings update automatically, and full logs—including RNG seeds and per-round actions—can be exported for postmortems.
 
-<Gallery
-  images={[
-    { src: thLobby, alt: "Lobby configuration" },
-    { src: thOverlay, alt: "Live match overlay" },
-    { src: thRound, alt: "Round summary" },
-  ]}
-/>
+## Module Interface
 
-## Integration Options
+Participants can submit code in three ways:
 
-1. **C# modules:** Drop-in scripts implementing `OnInit`, `BetAction`, and `FinalSelection`. Useful for quick prototypes.
-2. **Lua modules:** Mirror the C# API with `startfunction`, `round_start`, `action`, and `finalcards`, accessing shared `gamestat` values from the host.
-3. **WebSocket clients:** Communicate with the `WebAI` bridge. Receive serialized state payloads and reply with actions via socket message types.
+1. **C# code module** in a specific format, placed in a designated folder (for debugging only).
+2. **Lua module** written in a specific format, placed in a designated folder.
+3. **WebSocket module** for interaction with the developer’s program.
 
-<img src={thCsharp} alt="C# interface skeleton and gamestat payload" />
+<div className="not-prose my-8 space-y-12">
+  {/* C# module overview */}
+  <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-2">
+    <div>
+      <h4 className="text-lg font-semibold">C# module overview</h4>
+      <ul className="mt-2 list-disc pl-5 text-sm text-muted-foreground">
+        <li><code>OnInit</code> method for AI player initialization.</li>
+        <li><code>BetAction</code> method for choosing play actions.</li>
+        <li><code>FinalSelection</code> method for selecting five cards for final hand strength calculation.</li>
+        <li>
+          The <code>GameStat</code> contains contest parameters (max rounds, minimum bet per round, etc.);
+          <code> gamestat</code> represents the game state of the current round.
+        </li>
+      </ul>
+    </div>
+    <div className="rounded-lg bg-muted ">
+      <img src={imgCSharp} alt="C# module interface example" className="h-auto w-full rounded-md" />
+    </div>
+  </div>
 
-<img src={thLua} alt="Lua module contract" />
+{/* Lua module overview */}
+
+<div className="grid grid-cols-1 items-start gap-6 md:grid-cols-2">
+  <div className="order-2 rounded-lg bg-muted md:order-1">
+    <img src={imgLua} alt="Lua module interface example" className="h-auto w-full rounded-md" />
+  </div>
+  <div className="order-1 md:order-2">
+    <h4 className="text-lg font-semibold">Lua module overview</h4>
+    <ul className="mt-2 list-disc pl-5 text-sm text-muted-foreground">
+      <li>
+        <code>startfunction</code> method for initialization at contest start.
+      </li>
+      <li>
+        <code>round_start</code> method for initialization at each game’s start.
+      </li>
+      <li>
+        <code>action</code> method for choosing play actions.
+      </li>
+      <li>
+        <code>finalcards</code> method for final card selection.
+      </li>
+      <li>
+        Lua scripts directly access parameters from the C# server’s <code>gamestats</code>.
+      </li>
+    </ul>
+  </div>
+</div>
+
+{/* Websocket module overview */}
+
+  <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-2">
+    <div>
+      <h4 className="text-lg font-semibold">Websocket module overview</h4>
+      <ul className="mt-2 list-disc pl-5 text-sm text-muted-foreground">
+        <li>Supports both Lua and WebSocket module interfaces, corresponding to <code>LuaAI</code> and <code>WebAI</code> classes.</li>
+        <li>
+          <code>OnInit</code>, <code>StartGame</code>, <code>RoundStart</code>, <code>BetAction</code>, and <code>FinalSelection</code>
+          function similarly to C#, enabling AI initialization, data sync, round prep, play actions, and final card selection.
+        </li>
+      </ul>
+    </div>
+    <div className="rounded-lg bg-muted">
+      <img src={imgWebSocket} alt="WebSocket client interface example" className="h-auto w-full rounded-md" />
+    </div>
+  </div>
+</div>
 
 ## My Contributions
 
