@@ -9,6 +9,7 @@ export interface Project {
   summary: string;
   tags: string[];
   highlight: boolean;
+  hidden: boolean;
   url: string;
   year: number;
   monthLabel: string;
@@ -29,6 +30,7 @@ type MDXModule = {
     summary: string;
     tags?: string[];
     highlight?: boolean;
+    hidden?: boolean;
     links?: { label: string; href: string }[];
   };
   // Optional named exports from MDX for assets
@@ -61,6 +63,7 @@ function processModule(filePath: string, mod: MDXModule): Project {
     summary: fm.summary,
     tags: fm.tags || [],
     highlight: fm.highlight || false,
+    hidden: fm.hidden || false,
     url: `/work/${slug}`,
     year,
     monthLabel,
@@ -82,16 +85,16 @@ export function getProjectBySlug(slug: string): Project | undefined {
 export function getProjectsByView(view: "relevance" | "chronological"): Project[] {
   switch (view) {
     case "chronological":
-      return [...allProjects].sort(
-        (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-      );
+      return [...allProjects]
+        .filter((p) => !p.hidden)
+        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
     case "relevance":
     default:
       // Relevance = highlights first (most important), then by date
-      const sortedByDate = [...allProjects].sort(
-        (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-      );
+      const sortedByDate = [...allProjects]
+        .filter((p) => !p.hidden)
+        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
       const highlights = sortedByDate.filter((p) => p.highlight);
       const regular = sortedByDate.filter((p) => !p.highlight);
       return [...highlights, ...regular];

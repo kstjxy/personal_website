@@ -10,6 +10,7 @@ declare module "*.mdx" {
     summary: string;
     tags: string[];
     highlight: boolean;
+    hidden?: boolean;
     links?: { label: string; href: string }[];
   };
   export const cover: string | undefined;
