@@ -23,6 +23,9 @@ links:
 import YouTube from "@/components/mdx/YouTube";
 import Gallery from "@/components/mdx/Gallery";
 import coverImg from "./vr-design-in-context-impossible-geometry/cover.png";
+import cube1 from "./vr-design-in-context-impossible-geometry/cube1.png";
+import cube2 from "./vr-design-in-context-impossible-geometry/cube2.png";
+import cube3 from "./vr-design-in-context-impossible-geometry/cube3.png";
 
 export const cover = coverImg;
 
@@ -47,10 +50,9 @@ Impossible Geometry is a design-in-context study produced with Cornell's VR stud
 
 <Gallery
   images={[
-    {
-      src: "/projects/vr-design-in-context-impossible-geometry/cover.png",
-      alt: "Unreal implementation of the impossible cube mask",
-    },
+    { src: cube1, alt: "Unreal implementation of the impossible cube mask (view 1)" },
+    { src: cube2, alt: "Impossible cube mask (view 2)" },
+    { src: cube3, alt: "Impossible cube mask (view 3)" },
   ]}
 />
 
@@ -59,9 +61,3 @@ Impossible Geometry is a design-in-context study produced with Cornell's VR stud
 - **Lighting cues:** Shadows, indirect lighting, and relative scale reveal when the background truly sits behind the foreground. Flattened lighting hides the trick; matching these indicators to the illusion is a key next step.
 - **Breaking points:** Leaving the cone of illusion exposes seams where layers join. Those intersections mimic the classic impossible triangle, suggesting a shared governing rule we can generalize.
 - **VR translation:** Stereo rendering requires distinct masks per eye. Without eye-tracked, view-dependent adjustments the illusion collapses—an opportunity for foveated rendering research.
-
-## Future Directions
-
-- Use the local/global consistency framework to tackle additional impossible geometries (triangle, architecture-scale spaces) and derive reusable rules.
-- Prototype VR-specific solutions—eye-tracked masking, adaptive lighting, and comfort blends—to let players walk through impossible spaces without breaking immersion.
-- Apply the indicator analysis to machine-vision research where sketch-to-model systems must detect and classify non-physical structures.
