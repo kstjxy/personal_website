@@ -3,13 +3,16 @@ title: "Nomester Truck"
 slug: "nomester-truck"
 date: "2022-05-10"
 role: ["Programmer", "Level Designer"]
-summary: "CS3152 capstone where we built a cooking-meets-stealth game in LibGDX—balancing frantic recipe crafting with tactical pathing for a monstrous food truck."
-tags: ["LibGDX", "Java", "Game Design", "Strategy", "Systems"]
+summary: "Cooking‑meets‑stealth game in LibGDX—balancing frantic recipe crafting with tactical pathing for a monstrous food truck."
+tags: ["LibGDX", "Java", "Game Design", "Strategy", "Systems", "UI/UX"]
 highlight: false
 cover: ""
 links:
   [
-    { label: "Original Page", href: "https://xiaoyuejin.com/nomster-truck/" },
+    {
+      label: "Game Showcase",
+      href: "https://gdiac.cs.cornell.edu/temp/showcase/gallery/nomster_truck/",
+    },
     {
       label: "Game Manual",
       href: "https://assets.nicepagecdn.com/a7c2be37/6110704/files/manual1.pdf",
@@ -19,18 +22,21 @@ links:
 
 import Gallery from "@/components/mdx/Gallery";
 import coverImg from "./nomester-truck/hero.png";
-import ntShot1 from "./nomester-truck/screenshot_3-2.png";
-import ntShot2 from "./nomester-truck/screenshot_5-3.png";
-import ntShot3 from "./nomester-truck/screenshot_4-2.png";
-import ntPattern from "./nomester-truck/图层-1-1-2.png";
-import ntMenu from "./nomester-truck/screenshot_1-8.png";
-import ntCRC from "./nomester-truck/Screenshot2023-12-20at8.14.29AM-6.png";
+import imgGal1_1 from "./nomester-truck/gallery1_1.png";
+import imgGal1_2 from "./nomester-truck/gallery1_2.png";
+import imgGal1_3 from "./nomester-truck/gallery1_3.png";
+import imgGal2_1 from "./nomester-truck/gallery2_1.png";
+import imgGal2_2 from "./nomester-truck/gallery2_2.png";
+import imgGal2_3 from "./nomester-truck/gallery2_3.png";
+import imgArchitecture from "./nomester-truck/architecture.png";
+import imgUxLeft from "./nomester-truck/ux-left.png";
+import imgUxRight from "./nomester-truck/ux-right.png";
 
 export const cover = coverImg;
 
-## Overview
+## Core Vision
 
-Nomester Truck is our CS3152: Introduction to Game Architecture capstone. The pitch: keep a ravenous monster truck satisfied by cooking on the fly while sneaking past threats. We shipped a LibGDX title that blends time-pressured cooking with tactical route planning.
+As the owner of a hungry and impatient monster food truck, the player must cook to appease the truck, then decide when to move, rotate, or distract enemies. The experience mixes the frantic cadence of a real‑time kitchen with thoughtful, turn‑by‑turn positioning. The core tension comes from juggling recipes under pressure while plotting a safe route to the exit.
 
 ## Core Loop
 
@@ -41,9 +47,25 @@ Nomester Truck is our CS3152: Introduction to Game Architecture capstone. The pi
 <Gallery
   ui={{ peek: true }}
   images={[
-    { src: ntShot1, alt: "Recipe crafting" },
-    { src: ntShot2, alt: "Enemy avoidance" },
-    { src: ntShot3, alt: "Forest exit" },
+    { src: imgGal1_1, alt: "Recipe crafting" },
+    { src: imgGal1_2, alt: "Enemy avoidance" },
+    { src: imgGal1_3, alt: "Forest exit" },
+  ]}
+/>
+
+## Core Mechanics
+
+- Chop, sear, and boil ingredients to fulfill the truck’s monstrous appetite
+- Compel the truck to drive by swiftly completing recipes to feed the truck
+- Launch completed meals to lure enemies away from the truck
+- Supercharge the truck with powerful abilities by experimenting with new recipes
+- Evade enemies by strategically planning a safe route to the exit
+
+<Gallery
+  images={[
+    { src: imgGal2_1, alt: "Cooking HUD and orders" },
+    { src: imgGal2_2, alt: "Enemy patrol and distraction" },
+    { src: imgGal2_3, alt: "Route planning and exit" },
   ]}
 />
 
@@ -53,14 +75,19 @@ Nomester Truck is our CS3152: Introduction to Game Architecture capstone. The pi
 - Built encounter patterns that emphasize two pillars: frantic multitasking and deliberate planning.
 - Crafted progression that teaches recipe timing, patrolling enemy reads, and resource trade-offs.
 
-<img src={ntPattern} alt="Level pattern board showing puzzle layouts" />
-
 ## UX & Systems
 
 - Designed the kitchen HUD and truck control panels, iterating on wireframes to keep timers legible.
 - Produced screenflow and CRC diagrams that aligned the team on module boundaries.
 - Implemented core modules: scene transitions, truck AI state machine, and cooking interactions.
 
-<img src={ntMenu} alt="Final main menu layout" />
+<div className="not-prose my-4 grid grid-cols-1 gap-6 md:grid-cols-2">
+  <img src={imgUxLeft} alt="Main menu layout" className="h-auto w-full rounded-md" />
+  <img src={imgUxRight} alt="Kitchen HUD layout" className="h-auto w-full rounded-md" />
+</div>
 
-<img src={ntCRC} alt="CRC diagram showing subsystem responsibilities" />
+## Architecture
+
+We documented the codebase with dependency diagrams and CRC cards to keep the team aligned. Systems are split across presentation (screens and HUD), simulation (truck controller, enemy AI, recipes), and utilities (pathfinding, level loading). The diagram above captures the major relationships used to keep cooking, movement, and enemy behavior decoupled.
+
+<img src={imgArchitecture} alt="Architecture diagram" />
