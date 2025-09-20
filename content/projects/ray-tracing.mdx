@@ -1,21 +1,22 @@
 ---
 title: "Ray Tracing"
 slug: "ray-tracing"
-date: "2023-11-15"
+date: "2022-12-15"
 role: ["Graphics Programmer"]
-summary: "Python ray tracer built for Cornell CS4620—supporting multiple primitives, textured materials, reflections, and Fusion 360 assets."
-tags: ["Python", "Ray Tracing", "Rendering", "Procedural", "Shaders"]
+summary: "Python ray tracer supporting multiple primitives, textured materials, reflections, and Fusion 360 assets."
+tags: ["Python", "Ray Tracing", "Rendering", "Procedural", "Shaders", "Fusion 360", "Blender"]
 highlight: false
 cover: ""
 ---
 
 import Gallery from "@/components/mdx/Gallery";
 import coverImg from "./ray-tracing/cover.png";
-import rtNorms from "./ray-tracing/Screenshot2023-12-21at11.15.33PM-3.png";
-import rtObj from "./ray-tracing/unnamed5-2.png";
-import rtFinal1 from "./ray-tracing/unnamed6-1.png";
-import rtFinal2 from "./ray-tracing/unnamed7.png";
-import rtFinal3 from "./ray-tracing/Image_Video3-1-1.png";
+import imgObjects from "./ray-tracing/objects.png";
+import imgIntersect from "./ray-tracing/intersect.png";
+import imgShade from "./ray-tracing/shade.png";
+import imgBlender from "./ray-tracing/blender.png";
+import final1 from "./ray-tracing/Image_Video3-1.png";
+import final2 from "./ray-tracing/unnamed7.png";
 
 export const cover = coverImg;
 
@@ -30,22 +31,80 @@ For CS4620 I wrote a CPU ray tracer in Python, then modeled a chess vignette to 
 - **Materials:** Checkerboard texture sampler that swaps material properties based on UV position.
 - **Mesh loader:** Imported Fusion 360 assets via Blender-exported OBJ files for rooks, knights, and crosses.
 
-## Implementation Notes
+## Implementation Overview
 
-- Structured each primitive as a Python dataclass with a shared `intersect(ray)` signature.
-- Built a shading pipeline that resolves surface normals, runs texture lookup, then blends diffuse/specular terms.
-- Authored Blender reference scenes to match camera framing and place imported models accurately.
+<div className="not-prose my-8 space-y-12">
+  {/* Primitives */}
+  <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-2">
+    <div>
+      <h4 className="text-lg font-semibold">Primitives & Geometry</h4>
+      <ul className="mt-2 list-disc pl-5 text-sm text-muted-foreground">
+        <li>Sphere, triangle, cylinder, cone, and plane supported.</li>
+        <li>Each implemented as a dataclass with a shared <code>intersect(ray)</code> API.</li>
+        <li>Hierarchical transforms let scenes compose complex objects quickly.</li>
+      </ul>
+    </div>
+    <div className="rounded-lg bg-muted p-2">
+      <img src={imgObjects} alt="Primitive objects overview" className="h-auto w-full rounded-md" />
+    </div>
+  </div>
 
-<img src={rtNorms} alt="Shading debug view showing normal vectors" />
+{/* Intersection math */}
 
-<img src={rtObj} alt="OBJ import and placement workflow" />
+<div className="grid grid-cols-1 items-start gap-6 md:grid-cols-2">
+  <div className="order-2 rounded-lg bg-muted p-2 md:order-1">
+    <img
+      src={imgIntersect}
+      alt="Ray–object intersection snippet"
+      className="h-auto w-full rounded-md"
+    />
+  </div>
+  <div className="order-1 md:order-2">
+    <h4 className="text-lg font-semibold">Intersections</h4>
+    <ul className="mt-2 list-disc pl-5 text-sm text-muted-foreground">
+      <li>Analytic sphere and plane tests; Möller–Trumbore for triangles.</li>
+      <li>Returns hit distance, normal, and material payload for shading.</li>
+    </ul>
+  </div>
+</div>
+
+{/* Shading */}
+
+<div className="grid grid-cols-1 items-start gap-6 md:grid-cols-2">
+  <div>
+    <h4 className="text-lg font-semibold">Shading Pipeline</h4>
+    <ul className="mt-2 list-disc pl-5 text-sm text-muted-foreground">
+      <li>Phong model with ambient + point lights and mirror reflections.</li>
+      <li>Optional checkerboard texture swaps material properties via UV.</li>
+      <li>Normal resolution, texture lookup, and diffuse/specular blend.</li>
+    </ul>
+  </div>
+  <div className="rounded-lg bg-muted p-2">
+    <img src={imgShade} alt="Shading code and normal debug" className="h-auto w-full rounded-md" />
+  </div>
+</div>
+
+{/* Scene authoring */}
+
+  <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-2">
+    <div className="order-2 rounded-lg bg-muted p-2 md:order-1">
+      <img src={imgBlender} alt="Blender scene authoring and placement" className="h-auto w-full rounded-md" />
+    </div>
+    <div className="order-1 md:order-2">
+      <h4 className="text-lg font-semibold">Scene Authoring</h4>
+      <ul className="mt-2 list-disc pl-5 text-sm text-muted-foreground">
+        <li>Modeled chess assets in Fusion 360; exported via Blender OBJ.</li>
+        <li>Used reference scenes to match camera framing and scale.</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
 ## Final Renders
 
 <Gallery
   images={[
-    { src: rtFinal1, alt: "Final chess scene render" },
-    { src: rtFinal2, alt: "Alternate camera angle" },
-    { src: rtFinal3, alt: "High-resolution output" },
+    { src: final1, alt: "Final chess scene render" },
+    { src: final2, alt: "Alternate camera angle" },
   ]}
 />
